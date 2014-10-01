@@ -12,6 +12,8 @@ public class AppUser {
 	private String id;
 	
 	private String email;
+
+    private Boolean isAdmin;
 	
 	public AppUser() { }
 	
@@ -39,4 +41,12 @@ public class AppUser {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+    public Boolean getIsAdmin() {
+        return isAdmin;
+    }
+
+    public void setIsAdmin(Boolean isAdmin) {
+        this.isAdmin = isAdmin;
+    }
 }

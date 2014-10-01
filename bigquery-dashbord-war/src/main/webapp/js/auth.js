@@ -6,7 +6,7 @@ angular
         };
         
         obj.refresh = function() {
-	        $http.get('/GetUser')
+	        $http.get('/user')
 		        .success(function(data) {
 		            obj.user = eval(data);
 		        })
@@ -17,6 +17,10 @@ angular
         
         obj.isAuthenticated = function() {
         	return obj.user != null;
+        };
+
+        obj.isAdmin = function() {
+            return obj.user != null ? obj.user.isAdmin : false;
         };
         
         obj.getUser = function() {

@@ -1,7 +1,7 @@
 package com.github.bigquery.dashboard.service;
 
 import com.github.bigquery.dashboard.model.AppUser;
-import com.github.bigquery.dashboard.model.ToDoItem;
+import com.github.bigquery.dashboard.model.BigQuery;
 import com.googlecode.objectify.Objectify;
 import com.googlecode.objectify.ObjectifyFactory;
 import com.googlecode.objectify.ObjectifyService;
@@ -9,7 +9,7 @@ import com.googlecode.objectify.ObjectifyService;
 public final class OfyService {
     static {
     	factory().register(AppUser.class);
-    	factory().register(ToDoItem.class);
+    	factory().register(BigQuery.class);
     }
     
     private OfyService() {}

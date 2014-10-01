@@ -9,9 +9,9 @@ app.config(function($routeProvider, $locationProvider) {
 			templateUrl: "templates/home.html",
 			controller: 'HomeController'
 		})
-		.when('/todolist', {
-			templateUrl: "templates/todolist.html",
-			controller: 'ToDoListController'
+		.when('/admin', {
+			templateUrl: "templates/admin.html",
+			controller: 'BigQueryAdminController'
 		})
 		.otherwise({ redirectTo: '/'});
 });
@@ -27,22 +27,36 @@ app.controller('HeaderController', function($scope, $location, AuthService) {
 	$scope.$watch(function () { return AuthService.isAuthenticated(); }, function (newVal, oldVal) {
 		$scope.isAuthenticated = AuthService.isAuthenticated();
 	});
+
+    $scope.isAdmin = AuthService.isAdmin();
+    $scope.$watch(function () { return AuthService.isAuthenticated(); }, function (newVal, oldVal) {
+        $scope.isAdmin = AuthService.isAdmin();
+    });
 	
 	$scope.loginPath = function() {
-		return "/Login?path=" + $location.path();
+		return "/login?path=" + $location.path();
 	};
 	$scope.logoutPath = function() {
-		return "/Logout?path=" + $location.path();
+		return "/logout?path=" + $location.path();
 	};
 });
 
-app.controller('HomeController', function($scope, $location, AuthService) {
+app.controller('HomeController', function($scope, $location, AuthService, $http) {
 	AuthService.refresh();
 	
 	$scope.user = AuthService.getUser();
-	
+    $scope.items = {};
+
+    $http.get("/bigquery")
+        .success(function (data, status, headers, config) {
+            $scope.items = eval(data);
+        })
+        .error(function(error) {
+            console.log(error);
+        });
+
 	$scope.loginPath = function() {
-		return "/Login?path=" + $location.path();
+		return "/login?path=" + $location.path();
 	};
 	
 	$scope.$watch(function () { return AuthService.getUser(); }, function (newVal, oldVal) {
@@ -53,15 +67,19 @@ app.controller('HomeController', function($scope, $location, AuthService) {
 	$scope.$watch(function () { return AuthService.isAuthenticated(); }, function (newVal, oldVal) {
 		$scope.isAuthenticated = AuthService.isAuthenticated();
 	});
+
+    $scope.isAdmin = AuthService.isAdmin();
+    $scope.$watch(function () { return AuthService.isAuthenticated(); }, function (newVal, oldVal) {
+        $scope.isAdmin = AuthService.isAdmin();
+    });
 });
 
-app.controller('ToDoListController', function($scope, $http) {
+app.controller('BigQueryAdminController', function($scope, $http) {
 	
 	$scope.items = {};
-	$scope.showComplete = false;
 	$scope.formDisabled = true;
 	
-	$http.get("/ToDoList")
+	$http.get("/bigquery")
 		.success(function (data, status, headers, config) {
 			$scope.items = eval(data);
 			$scope.formDisabled = false;
@@ -71,17 +89,17 @@ app.controller('ToDoListController', function($scope, $http) {
 		});
 	
 	$scope.update = function(item) {
-		$http.put("/ToDoList", item)
+		$http.put("/bigquery", item)
 			.error(function(error) {
 				console.log(error);
 			});
 	};
 	
 	$scope.del = function(item) {
-		$http.post("/DeleteToDoItem", item)
+		$http.delete("/bigquery/"+item.id)
 			.success(function (data, status, headers, config) {
 			    for (var i = 0; i < $scope.items.length; i++) {
-			        if ($scope.items[i].action.toUpperCase() === item.action.toUpperCase()) {
+			        if ($scope.items[i].id === item.id) {
 			        	$scope.items.splice(i, 1);
 			        	break;
 			        }
@@ -91,38 +109,21 @@ app.controller('ToDoListController', function($scope, $http) {
 				console.log(error);
 			});
 	};
-	
-	$scope.showItem = function(item) {
-		return $scope.showComplete == true || item.done == false;
-	};
-	
-	$scope.incompleteCount = function() {
-		var count = 0;
-		angular.forEach($scope.items, function(item) {
-			if (!item.done)
-				++count;
-		});
-		return count;
-	};
-	
-	$scope.warningLevel = function() {
-		return $scope.incompleteCount() < 3 ? "label-success" : "label-warning";
-	};
-	
+
 	$scope.addNewItem = function() {
 	    for (var i = 0; i < $scope.items.length; i++) {
-	        if ($scope.items[i].action.toUpperCase() === $scope.actionText.toUpperCase()) {
-	        	alert($scope.actionText + " already exists!");
+	        if ($scope.items[i].libelle.toUpperCase() === $scope.libelle.toUpperCase()) {
+	        	alert($scope.libelleText + " already exists!");
 	        	return;
 	        }
 	    };
 		
 		$scope.formDisabled = true;
-		var item = {action: $scope.actionText, done: false};
-		$http.put("/ToDoList", item)
+		var item = {libelle: $scope.libelleText, request: $scope.requestText};
+		$http.put("/bigquery", item)
 			.success(function (data, status, headers, config) {
 				$scope.items.push(item);
-				$scope.actionText = "";
+                $scope.libelleText = "";
 				$scope.formDisabled = false;
 		    })
 			.error(function(error) {

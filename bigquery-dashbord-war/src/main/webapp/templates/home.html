@@ -1,7 +1,8 @@
 <div class="home">
-	<p ng-show="isAuthenticated" class="lead">Welcome, {{user.email}}!
-		<br/><br/>
-		Please see your <a ng-href="/#/todolist">ToDo List</a>.
+	<p ng-show="isAuthenticated" class="lead">List bigquery
+		<div class="list-group">
+            <a ng-repeat="item in items | orderBy:'libelle'" href="/#/request/{{item.id}}" class="list-group-item">{{item.libelle}}</a>
+        </div>
 	</p>
 	<p ng-hide="isAuthenticated" class="lead">Welcome!
 		<br/><br/>
