@@ -80,7 +80,7 @@ app.controller('BigQueryAdminController', function($scope, $http) {
 	$scope.formDisabled = true;
 	
 	$http.get("/bigquery")
-		.success(function (data, status, headers, config) {
+		.success(function (data) {
 			$scope.items = eval(data);
 			$scope.formDisabled = false;
 	    })
@@ -97,7 +97,7 @@ app.controller('BigQueryAdminController', function($scope, $http) {
 	
 	$scope.del = function(item) {
 		$http.delete("/bigquery/"+item.id)
-			.success(function (data, status, headers, config) {
+			.success(function (data) {
 			    for (var i = 0; i < $scope.items.length; i++) {
 			        if ($scope.items[i].id === item.id) {
 			        	$scope.items.splice(i, 1);
@@ -121,8 +121,8 @@ app.controller('BigQueryAdminController', function($scope, $http) {
 		$scope.formDisabled = true;
 		var item = {libelle: $scope.libelleText, request: $scope.requestText};
 		$http.put("/bigquery", item)
-			.success(function (data, status, headers, config) {
-				$scope.items.push(item);
+			.success(function (data) {
+				$scope.items.push(data);
                 $scope.libelleText = "";
 				$scope.formDisabled = false;
 		    })
