@@ -1,4 +1,4 @@
-package com.github.bigquery.dashboard.servlet;
+package com.github.bigquery.dashboard.rest;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -40,12 +40,13 @@ public class BigQueryRestService {
 
     @PUT
     @Path("/query")
-    public void addQuery( BigQuery bigQuery) {
+    public BigQuery addQuery(BigQuery bigQuery) {
         final AppUser user = ServletUtils.getUserAuthenticated();
         if (user != null) {
             LOGGER.info("Put " + bigQuery.getLibelle());
-            BigQueryService.createOrUpdate(bigQuery);
+            return BigQueryService.createOrUpdate(bigQuery);
         }
+        return null;
 
     }
 
