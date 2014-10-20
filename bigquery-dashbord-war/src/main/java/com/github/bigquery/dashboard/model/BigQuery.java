@@ -1,6 +1,5 @@
 package com.github.bigquery.dashboard.model;
 
-import com.google.appengine.api.datastore.Text;
 import com.google.gson.annotations.Expose;
 import com.googlecode.objectify.annotation.Cache;
 import com.googlecode.objectify.annotation.Entity;

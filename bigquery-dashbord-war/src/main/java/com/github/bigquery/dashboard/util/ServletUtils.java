@@ -3,9 +3,6 @@ package com.github.bigquery.dashboard.util;
 import java.io.BufferedReader;
 import java.io.IOException;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import com.github.bigquery.dashboard.model.AppUser;
 import com.github.bigquery.dashboard.service.AppUserService;
 import com.google.appengine.api.users.User;
@@ -60,14 +57,9 @@ public final class ServletUtils {
 	    return fromCustomJson(getString(reader), clazz);
 	}
 	
-	public static AppUser getUserAndRedirectIfNotAuthenticated(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-	    UserService userService = UserServiceFactory.getUserService();
-	    User user = userService.getCurrentUser();
-	    
-	    if (user == null) {
-	    	resp.sendRedirect(userService.createLoginURL(req.getRequestURI()));
-	    	return null;
-	    }
+	public static AppUser getUserAuthenticated() {
+	    final UserService userService = UserServiceFactory.getUserService();
+	    final User user = userService.getCurrentUser();
 	    
 	    return AppUserService.getAppUser(user);
 	}

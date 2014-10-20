@@ -47,7 +47,7 @@ app.controller('HomeController', function($scope, $location, AuthService, $http)
 	$scope.user = AuthService.getUser();
     $scope.items = {};
 
-    $http.get("/bigquery")
+    $http.get("/api/service/queries")
         .success(function (data, status, headers, config) {
             $scope.items = eval(data);
         })
@@ -79,7 +79,7 @@ app.controller('BigQueryAdminController', function($scope, $http) {
 	$scope.items = {};
 	$scope.formDisabled = true;
 	
-	$http.get("/bigquery")
+	$http.get("/api/service/queries")
 		.success(function (data) {
 			$scope.items = eval(data);
 			$scope.formDisabled = false;
@@ -89,14 +89,14 @@ app.controller('BigQueryAdminController', function($scope, $http) {
 		});
 	
 	$scope.update = function(item) {
-		$http.put("/bigquery", item)
+		$http.put("/api/service/query", item)
 			.error(function(error) {
 				console.log(error);
 			});
 	};
 	
 	$scope.del = function(item) {
-		$http.delete("/bigquery/"+item.id)
+		$http.delete("/api/service/query/"+item.id)
 			.success(function (data) {
 			    for (var i = 0; i < $scope.items.length; i++) {
 			        if ($scope.items[i].id === item.id) {
@@ -120,7 +120,7 @@ app.controller('BigQueryAdminController', function($scope, $http) {
 		
 		$scope.formDisabled = true;
 		var item = {libelle: $scope.libelleText, request: $scope.requestText};
-		$http.put("/bigquery", item)
+		$http.put("/api/service/query", item)
 			.success(function (data) {
 				$scope.items.push(data);
                 $scope.libelleText = "";

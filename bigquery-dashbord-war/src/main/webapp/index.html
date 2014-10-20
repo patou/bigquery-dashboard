@@ -12,11 +12,11 @@
 		  <div class="navbar-collapse" ng-controller="HeaderController">
 		    <ul class="nav navbar-nav navbar-left">
 				<li ng-class="{active: isActive('/')}"><a href="#">Home</a></li>
-				<li ng-show="isAdmin" ng-class="{active: isActive('/admin')}"><a href="#/admin">Admin</a></li>
+				<li ng-show="isAdmin" ng-class="{active: isActive('/admin')}"><a href="#/admin">Administration</a></li>
 		    </ul>
 		    <ul class="nav navbar-nav navbar-right">
-		    	<li ng-show="isAuthenticated"><a ng-href="{{logoutPath()}}">Logout</a></li>
-		    	<li ng-hide="isAuthenticated"><a ng-href="{{loginPath()}}">Login</a></li>
+		    	<li ng-show="isAuthenticated"><a ng-href="{{logoutPath()}}">Déconnexion</a></li>
+		    	<li ng-hide="isAuthenticated"><a ng-href="{{loginPath()}}">Connexion</a></li>
 			</ul>
 		  </div>
 		</nav>
