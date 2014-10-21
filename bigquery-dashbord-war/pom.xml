@@ -72,6 +72,24 @@
             <artifactId>jersey-json</artifactId>
             <version>${jersey.version}</version>
         </dependency>
+
+        <!-- ================ Big Query ==================================== -->
+
+        <dependency>
+            <groupId>com.google.api-client</groupId>
+            <artifactId>google-api-client-appengine</artifactId>
+            <version>1.19.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.http-client</groupId>
+            <artifactId>google-http-client-jackson2</artifactId>
+            <version>1.17.0-rc</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.apis</groupId>
+            <artifactId>google-api-services-bigquery</artifactId>
+            <version>v2-rev171-1.19.0</version>
+        </dependency>
 		
         <!-- Test Dependencies -->
         <dependency>
@@ -97,7 +115,6 @@
             <artifactId>fest-assert</artifactId>
             <version>${fest-assert.version}</version>
         </dependency>
-
     </dependencies>
       
     <build>
