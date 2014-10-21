@@ -1,11 +1,10 @@
 <div class="home">
-	<p ng-show="isAuthenticated" class="lead">Liste des requêtes
+	<p ng-show="isAuthenticated" class="lead">{{'REQUESTS_LIST' | translate}}
 		<div class="list-group">
             <a ng-repeat="item in items | orderBy:'libelle'" href="/#/request/{{item.id}}" class="list-group-item">{{item.libelle}}</a>
         </div>
 	</p>
-	<p ng-hide="isAuthenticated" class="lead">Bienvenue sur BigQuery DashBoard!
-		<br/><br/>
-		Please <a ng-href="{{loginPath()}}">Se connecter</a>.
+	<p ng-hide="isAuthenticated" class="lead">{{'WELCOME' | translate}}
+		<a ng-href="{{loginPath()}}">{{'LOGIN_ACTION' | translate}}</a>.
 	</p>
 </div>

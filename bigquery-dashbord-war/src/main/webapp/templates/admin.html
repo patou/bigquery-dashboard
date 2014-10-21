@@ -1,31 +1,28 @@
 <div>
     <div class="page-header text-center">
-        <h1>Administration</h1>
+        <h1>{{'ADMINISTRATION' | translate}}</h1>
     </div>
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
 
             <form class="form-horizontal" ng-disabled="formDisabled">
                 <fieldset>
+                    <legend>{{'ADD_NEW_REQUEST' | translate}}</legend>
 
-                    <!-- Form Name -->
-                    <legend>Ajouter une nouvelle requête</legend>
-
-                    <!-- Text input-->
                     <div class="control-group">
-                        <label class="control-label" for="libelleTexte">Libellé</label>
+                        <label class="control-label" for="libelleTexte">{{'REQUEST_LABEL' | translate}}</label>
 
                         <div class="controls">
                             <input ng-model="libelleText" id="libelleTexte" name="libelleTexte" type="text"
-                                   placeholder="Libellé" class="input-xlarge form-control" required="">
+                                   placeholder="{{'REQUEST_LABEL' | translate}}" class="input-xlarge form-control"
+                                   required="">
 
-                            <p class="help-block">Libellé de la requête</p>
+                            <p class="help-block">{{'HELP_REQUEST_LABEL' | translate}}</p>
                         </div>
                     </div>
 
-                    <!-- Textarea -->
                     <div class="control-group">
-                        <label class="control-label" for="requestText">Requête</label>
+                        <label class="control-label" for="requestText">{{'REQUEST' | translate}}</label>
 
                         <div class="controls">
                             <textarea ng-model="requestText" id="requestText" name="requestText"
@@ -33,15 +30,15 @@
                         </div>
                     </div>
 
-                    <!-- Button (Double) -->
                     <div class="control-group">
                         <label class="control-label" for="btnValider"></label>
 
                         <div class="controls">
                             <button id="btnValider" name="btnValider" class="btn btn-success" ng-click="addNewItem()">
-                                Valider
+                                {{'VALIDATE' | translate}}
                             </button>
-                            <button id="btnAnnuler" name="btnAnnuler" class="btn btn-danger">Annuler</button>
+                            <button id="btnAnnuler" name="btnAnnuler" class="btn btn-danger">{{'CANCEL' | translate}}
+                            </button>
                         </div>
                     </div>
 
@@ -50,21 +47,28 @@
 
         </div>
     </div>
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th>Libellé</th>
-            <th>Request</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="item in items | orderBy:'libelle'">
-            <td>{{item.libelle}}</td>
-            <td>{{item.request}}</td>
-            <td>
-                <button ng-click="del(item)" id="btnSupprimer" name="btnSupprimer" class="btn btn-danger">Supprimer</button>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>{{'REQUEST_LABEL' | translate}}</th>
+                    <th>{{'REQUEST' | translate}}</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="item in items | orderBy:'libelle'">
+                    <td>{{item.libelle}}</td>
+                    <td>{{item.request}}</td>
+                    <td>
+                        <button ng-click="del(item)" id="btnSupprimer" name="btnSupprimer" class="btn btn-danger">
+                            {{'DELETE'
+                            | translate}}
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>

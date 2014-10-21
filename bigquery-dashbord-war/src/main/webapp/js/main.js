@@ -1,5 +1,6 @@
-var app = angular.module('appEngineAngularDemo', [
-	   'ngRoute',
-	   'auth'
-   ]);
+var app = angular.module('bigQueryDashBoard', [
+    'ngRoute',
+    'auth',
+    'pascalprecht.translate'
+]);
 
