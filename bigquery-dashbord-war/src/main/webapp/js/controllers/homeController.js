@@ -1,12 +1,14 @@
-app.controller('HomeController', function($scope, $location, AuthService, $http) {
+app.controller('HomeController', function($scope, $location, AuthService, $http, ngProgress) {
+    ngProgress.reset();
+    ngProgress.start();
     AuthService.refresh();
-
     $scope.user = AuthService.getUser();
     $scope.items = {};
 
     $http.get("/api/service/queries")
         .success(function (data, status, headers, config) {
             $scope.items = eval(data);
+            ngProgress.complete();
         })
         .error(function(error) {
             console.log(error);

@@ -1,6 +1,5 @@
-app.controller('HeaderController', function($scope, $location, AuthService) {
+app.controller('HeaderController', function($scope, $location, AuthService, ngProgress) {
     AuthService.refresh();
-
     $scope.isActive = function(viewLocation) {
         return viewLocation === $location.path();
     };

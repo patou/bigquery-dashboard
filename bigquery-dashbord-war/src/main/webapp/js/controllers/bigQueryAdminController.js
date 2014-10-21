@@ -1,10 +1,12 @@
-app.controller('BigQueryAdminController', function($scope, $http) {
-
+app.controller('BigQueryAdminController', function($scope, $http, ngProgress) {
+    ngProgress.reset();
+    ngProgress.start();
     $scope.items = {};
     $scope.formDisabled = true;
 
     $http.get("/api/service/queries")
         .success(function (data) {
+            ngProgress.complete();
             $scope.items = eval(data);
             $scope.formDisabled = false;
         })
@@ -13,13 +15,21 @@ app.controller('BigQueryAdminController', function($scope, $http) {
         });
 
     $scope.update = function(item) {
+        ngProgress.reset();
+        ngProgress.start();
         $http.put("/api/service/query", item)
+            .success(function (data){
+                ngProgress.complete();
+            })
             .error(function(error) {
                 console.log(error);
             });
+
     };
 
     $scope.del = function(item) {
+        ngProgress.reset();
+        ngProgress.start();
         $http.delete("/api/service/query/"+item.id)
             .success(function (data) {
                 for (var i = 0; i < $scope.items.length; i++) {
@@ -28,6 +38,7 @@ app.controller('BigQueryAdminController', function($scope, $http) {
                         break;
                     }
                 };
+                ngProgress.complete();
             })
             .error(function(error) {
                 console.log(error);
@@ -41,7 +52,8 @@ app.controller('BigQueryAdminController', function($scope, $http) {
                 return;
             }
         };
-
+        ngProgress.reset();
+        ngProgress.start();
         $scope.formDisabled = true;
         var item = {libelle: $scope.libelleText, request: $scope.requestText};
         $http.put("/api/service/query", item)
@@ -50,6 +62,7 @@ app.controller('BigQueryAdminController', function($scope, $http) {
                 $scope.libelleText = "";
                 $scope.requestText = "";
                 $scope.formDisabled = false;
+                ngProgress.complete();
             })
             .error(function(error) {
                 console.log(error);
