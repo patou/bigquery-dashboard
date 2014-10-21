@@ -11,7 +11,9 @@ public final class AppUserService {
     
     public static AppUser getAppUser(User user) {
     	Objectify ofy = OfyService.ofy();
-    	
+    	if (user == null) { //Not Logged
+            return null;
+        }
     	AppUser appUser = ofy.load().type(AppUser.class).id(user.getUserId()).now();
         UserService userService = UserServiceFactory.getUserService();
     	if (appUser == null) { // appUser wasn't in the datastore
