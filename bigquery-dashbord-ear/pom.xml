@@ -13,6 +13,10 @@
     <version>1.0-SNAPSHOT</version>
   </parent>
 
+  <properties>
+      <appengine.target.version>1.9.14</appengine.target.version>
+  </properties>
+
   <build>
     <plugins>
       <plugin>

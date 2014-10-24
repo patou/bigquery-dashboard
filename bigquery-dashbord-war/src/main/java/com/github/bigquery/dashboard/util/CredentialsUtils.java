@@ -45,7 +45,7 @@ public class CredentialsUtils {
                         .setServiceAccountId("1098120739370-0255d5mgj6aqpqhjv4briqvtkb102f8t@developer.gserviceaccount.com")
                         .setServiceAccountScopes(scopes)
                                 // Download this file from https://console.developers.google.com/project/myproject/apiui/credential
-                        .setServiceAccountPrivateKeyFromP12File(new File(CredentialsUtils.class.getResource("dashboard-bigquery-b7688a960ef4.p12").toURI()))
+                        .setServiceAccountPrivateKeyFromP12File(new File(CredentialsUtils.class.getResource("/dashboard-bigquery-b7688a960ef4.p12").toURI()))
 
                         .build();
             } catch (Exception e) {

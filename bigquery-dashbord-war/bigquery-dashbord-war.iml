@@ -10,14 +10,11 @@
           <root url="file://$MODULE_DIR$/src/main/webapp/WEB-INF" relative="WEB-INF" />
           <root url="file://$MODULE_DIR$/src/main/webapp" relative="/" />
         </webroots>
-        <sourceRoots>
-          <root url="file://$MODULE_DIR$/src/main/java" />
-        </sourceRoots>
       </configuration>
     </facet>
     <facet type="google-app-engine" name="Google App Engine">
       <configuration>
-        <sdk-home-path>$USER_HOME$/.m2/repository/com/google/appengine/appengine-java-sdk/1.9.12/appengine-java-sdk/appengine-java-sdk-1.9.12</sdk-home-path>
+        <sdk-home-path>$MAVEN_REPOSITORY$/com/google/appengine/appengine-java-sdk/1.9.14/appengine-java-sdk/appengine-java-sdk-1.9.14</sdk-home-path>
       </configuration>
     </facet>
   </component>
@@ -31,7 +28,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Maven: com.google.appengine:appengine-api-1.0-sdk:1.9.12" level="project" />
+    <orderEntry type="library" name="Maven: com.google.appengine:appengine-api-1.0-sdk:1.9.14" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax.servlet:servlet-api:2.5" level="project" />
     <orderEntry type="library" name="Maven: jstl:jstl:1.2" level="project" />
     <orderEntry type="library" name="Maven: com.googlecode.objectify:objectify:5.1" level="project" />
@@ -71,8 +68,8 @@
     <orderEntry type="library" name="Maven: com.google.guava:guava-jdk5:13.0" level="project" />
     <orderEntry type="library" name="Maven: com.google.api-client:google-api-client-servlet:1.19.0" level="project" />
     <orderEntry type="library" name="Maven: com.google.apis:google-api-services-bigquery:v2-rev171-1.19.0" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: com.google.appengine:appengine-testing:1.9.12" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: com.google.appengine:appengine-api-stubs:1.9.12" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.google.appengine:appengine-testing:1.9.14" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.google.appengine:appengine-api-stubs:1.9.14" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.mockito:mockito-all:1.9.5" level="project" />
     <orderEntry type="library" name="Maven: org.easytesting:fest-assert:1.4" level="project" />
     <orderEntry type="library" name="Maven: org.easytesting:fest-util:1.1.6" level="project" />
