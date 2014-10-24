@@ -28,6 +28,7 @@ public class CredentialsUtils {
 		Set<String> scopes = new HashSet<String>();
 		scopes.add(BigqueryScopes.BIGQUERY);
 		scopes.add(BigqueryScopes.BIGQUERY_INSERTDATA);
+        scopes.add(BigqueryScopes.CLOUD_PLATFORM);
         HttpRequestInitializer credential = getCredential(scopes);
         return new Bigquery.Builder(HTTP_TRANSPORT, JSON_FACTORY, credential)
 				.setApplicationName(Config.APPLICATION_NAME).build();
