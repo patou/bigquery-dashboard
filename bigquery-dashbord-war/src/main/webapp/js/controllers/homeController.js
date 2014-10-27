@@ -44,6 +44,7 @@ app.controller('HomeController', function ($scope, $location, $http, $interval, 
         var item = $scope.items[index].request;
         ngProgress.reset();
         ngProgress.start();
+        $location.path("/result");
         $http.post("/api/execute/query/", item)
             .success(function (data) {
                 console.log(data);
@@ -62,7 +63,6 @@ app.controller('HomeController', function ($scope, $location, $http, $interval, 
                     .success(function (data) {
                         if (data.jobComplete === true) {
                             $scope.resuls = eval(data);
-                            $location.path("/result");
                             console.log(data);
                         }
                         else {
