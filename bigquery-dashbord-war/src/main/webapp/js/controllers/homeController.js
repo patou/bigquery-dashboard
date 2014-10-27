@@ -64,8 +64,9 @@ app.controller('HomeController', function ($scope, $location, $http, $interval, 
                 $http.get("/api/execute/result/" + jobId)
                     .success(function (data) {
                         if (data.jobComplete === true) {
-                            $scope.stopFight();
+                            $scope.stopListenResult();
                             $scope.resuls = eval(data);
+                            console.log(data);
 
                         }
                     })
