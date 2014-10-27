@@ -51,7 +51,7 @@ app.controller('HomeController', function($scope, $location, AuthService, $http,
 
     var requestCallback = function (jobId) {
         var stop;
-        $scope.fight = function () {
+        $scope.startListenResult = function () {
             if (angular.isDefined(stop)) return;
 
             stop = $interval(function () {
@@ -68,11 +68,12 @@ app.controller('HomeController', function($scope, $location, AuthService, $http,
                     });
             }, 1000);
         };
-        $scope.stopFight = function() {
+        $scope.stopListenResult = function() {
             if (angular.isDefined(stop)) {
                 $interval.cancel(stop);
                 stop = undefined;
             }
         };
+        $scope.startListenResult(jobId);
     };
 });
