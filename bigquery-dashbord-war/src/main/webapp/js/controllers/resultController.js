@@ -1,6 +1,6 @@
 app.controller('ResultController', function ($http, $scope, $location, $interval, $routeParams, AuthService) {
     AuthService.refresh();
-    var requestCallback = function (jobId) {
+    var loadResult = function (jobId) {
         $scope.startListenResult = function () {
             $interval(function () {
                 $http.get("/api/execute/result/" + jobId)
@@ -10,7 +10,7 @@ app.controller('ResultController', function ($http, $scope, $location, $interval
                             console.log(data);
                         }
                         else {
-                            requestCallback(jobId);
+                            loadResult(jobId);
                         }
                     })
                     .error(function () {
@@ -19,8 +19,25 @@ app.controller('ResultController', function ($http, $scope, $location, $interval
             }, 1000, 1);
         };
         $scope.startListenResult(jobId);
+    }
+    var requestCallback = function (reqId) {
+        $http.get("/api/service/query/", item)
+            .success(function (data) {
+                console.log(data);
+                $http.post("/api/execute/query/", data.request)
+                    .success(function (jobRef) {
+                        console.log(jobRef);
+                        loadResult(jobRef.jobId);
+                    })
+                    .error(function (error) {
+                        console.log(error);
+                    });
+            })
+            .error(function (error) {
+                console.log(error);
+            });
     };
 
-    requestCallback($routeParams.jobId);
+    requestCallback($routeParams.reqId);
 
 });
