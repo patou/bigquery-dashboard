@@ -1,3 +1,18 @@
 <div class="home">
-resultats
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th ng-repeat="result in results.schema.fields">{{result.name}}</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="result in results.rows">
+                    <td ng-repeat="result in row.f">{{result.v}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>

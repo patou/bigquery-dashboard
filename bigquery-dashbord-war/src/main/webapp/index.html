@@ -1,38 +1,39 @@
 <!DOCTYPE html>
 <html ng-app="bigQueryDashBoard">
-	<head>
-		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-		<title>Bigquery Dashboard</title>
- 		<link href="css/bootstrap.css" rel="stylesheet" />
- 		<link href="css/bootstrap-theme.css" rel="stylesheet" />
- 		<link href="css/styles.css" rel="stylesheet" />
- 		<link href="css/ngProgress.css" rel="stylesheet" />
-	</head>
-	<body>
-		<nav class="navbar navbar-inverse" role="navigation">
-		  <div class="navbar-collapse" ng-controller="HeaderController">
-		    <ul class="nav navbar-nav navbar-left">
-				<li ng-class="{active: isActive('/')}"><a href="#">Home</a></li>
-				<li ng-show="isAdmin" ng-class="{active: isActive('/admin')}"><a href="#/admin">{{'ADMINISTRATION' | translate}}</a></li>
-		    </ul>
-		    <ul class="nav navbar-nav navbar-right">
-		    	<li ng-show="isAuthenticated"><a ng-href="{{logoutPath()}}">{{'LOGOUT' | translate}}</a></li>
-		    	<li ng-hide="isAuthenticated"><a ng-href="{{loginPath()}}">{{'LOGIN' | translate}}</a></li>
-			</ul>
-		  </div>
-		</nav>
-		<div ng-view></div>
-		<script src="js/lib/angular.js"></script>
-		<script src="js/lib/angular-route.js"></script>
-		<script src="js/lib/angular-translate.min.js"></script>
-		<script src="js/lib/ngProgress.min.js"></script>
-		<script src="js/main.js"></script>
-        <script src="js/i18n/translate.js"></script>
-		<script src="js/route/route.js"></script>
-		<script src="js/auth/auth.js"></script>
-		<script src="js/controllers/bigQueryAdminController.js"></script>
-        <script src="js/controllers/resultController.js"></script>
-		<script src="js/controllers/headerController.js"></script>
-		<script src="js/controllers/homeController.js"></script>
-	</body>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <title>Bigquery Dashboard</title>
+    <link href="css/bootstrap.css" rel="stylesheet"/>
+    <link href="css/bootstrap-theme.css" rel="stylesheet"/>
+    <link href="css/styles.css" rel="stylesheet"/>
+    <link href="css/ngProgress.css" rel="stylesheet"/>
+</head>
+<body>
+<nav class="navbar navbar-inverse" role="navigation">
+    <div class="navbar-collapse" ng-controller="HeaderController">
+        <ul class="nav navbar-nav navbar-left">
+            <li ng-class="{active: isActive('/')}"><a href="#">Home</a></li>
+            <li ng-show="isAdmin" ng-class="{active: isActive('/admin')}"><a href="#/admin">{{'ADMINISTRATION' |
+                translate}}</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li ng-show="isAuthenticated"><a ng-href="{{logoutPath()}}">{{'LOGOUT' | translate}}</a></li>
+            <li ng-hide="isAuthenticated"><a ng-href="{{loginPath()}}">{{'LOGIN' | translate}}</a></li>
+        </ul>
+    </div>
+</nav>
+<div ng-view></div>
+<script src="js/lib/angular.js"></script>
+<script src="js/lib/angular-route.js"></script>
+<script src="js/lib/angular-translate.min.js"></script>
+<script src="js/lib/ngProgress.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/i18n/translate.js"></script>
+<script src="js/route/route.js"></script>
+<script src="js/auth/auth.js"></script>
+<script src="js/controllers/bigQueryAdminController.js"></script>
+<script src="js/controllers/resultController.js"></script>
+<script src="js/controllers/headerController.js"></script>
+<script src="js/controllers/homeController.js"></script>
+</body>
 </html>

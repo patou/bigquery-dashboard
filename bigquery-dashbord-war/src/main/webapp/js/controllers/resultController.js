@@ -1,4 +1,4 @@
-app.controller('ResultController', function ($scope, $location, $interval, $routeParams, AuthService) {
+app.controller('ResultController', function ($http, $scope, $location, $interval, $routeParams, AuthService) {
     AuthService.refresh();
     var requestCallback = function (jobId) {
         $scope.startListenResult = function () {
@@ -6,7 +6,7 @@ app.controller('ResultController', function ($scope, $location, $interval, $rout
                 $http.get("/api/execute/result/" + jobId)
                     .success(function (data) {
                         if (data.jobComplete === true) {
-                            $scope.resuls = eval(data);
+                            $scope.results = eval(data);
                             console.log(data);
                         }
                         else {
