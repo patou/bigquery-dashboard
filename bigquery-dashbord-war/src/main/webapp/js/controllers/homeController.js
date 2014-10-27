@@ -31,4 +31,19 @@ app.controller('HomeController', function($scope, $location, AuthService, $http,
     $scope.$watch(function () { return AuthService.isAuthenticated(); }, function (newVal, oldVal) {
         $scope.isAdmin = AuthService.isAdmin();
     });
+
+
+    $scope.launchRequest = function (index){
+        var item = $scope.items[index].request;
+        ngProgress.reset();
+        ngProgress.start();
+        $http.post("/api/execute/query/",item)
+            .success(function (data, status, headers, config){
+                console.log(data);
+                ngProgress.complete();
+            })
+            .error(function(error){
+                console.log(error);
+            });
+    };
 });

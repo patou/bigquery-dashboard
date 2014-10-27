@@ -1,7 +1,7 @@
 <div class="home">
 	<p ng-show="isAuthenticated" class="lead">{{'REQUESTS_LIST' | translate}}
 		<div class="list-group">
-            <a ng-repeat="item in items | orderBy:'libelle'" href="/#/request/{{item.id}}" class="list-group-item">{{item.libelle}}</a>
+            <a ng-repeat="item in items | orderBy:'libelle'" href="javascript: ;" class="list-group-item" ng-click="launchRequest($index)" title="{{item.request}}">{{item.libelle}}</a>
         </div>
 	</p>
 	<p ng-hide="isAuthenticated" class="lead">{{'WELCOME' | translate}}
