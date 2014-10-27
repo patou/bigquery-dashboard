@@ -56,31 +56,23 @@ app.controller('HomeController', function ($scope, $location, $http, $interval, 
     };
 
     var requestCallback = function (jobId) {
-        var stop;
         $scope.startListenResult = function () {
-            if (angular.isDefined(stop)) return;
-
-            stop = $interval(function () {
+            $interval(function () {
                 $http.get("/api/execute/result/" + jobId)
                     .success(function (data) {
                         if (data.jobComplete === true) {
-                            $scope.stopListenResult();
                             $scope.resuls = eval(data);
                             $location.path("/result");
                             console.log(data);
-
+                        }
+                        else {
+                            requestCallback(jobId);
                         }
                     })
                     .error(function (error) {
                         console.log("Erreur durant l'interrogation du job.")
                     });
-            }, 1000);
-        };
-        $scope.stopListenResult = function () {
-            if (angular.isDefined(stop)) {
-                $interval.cancel(stop);
-                stop = undefined;
-            }
+            }, 1000, 1);
         };
         $scope.startListenResult(jobId);
     };
