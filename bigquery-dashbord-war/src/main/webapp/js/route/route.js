@@ -1,12 +1,16 @@
-app.config(function($routeProvider, $locationProvider) {
+app.config(function ($routeProvider, $locationProvider) {
     $routeProvider
-        .when('/', {
+        .when("/", {
             templateUrl: "templates/home.html",
-            controller: 'HomeController'
+            controller: "HomeController"
         })
-        .when('/admin', {
+        .when("/admin", {
             templateUrl: "templates/admin.html",
-            controller: 'BigQueryAdminController'
+            controller: "BigQueryAdminController"
+        })
+        .when("/result", {
+            templateUrl: "templates/result.html",
+            controller: "ResultController"
         })
         .otherwise({ redirectTo: '/'});
 });

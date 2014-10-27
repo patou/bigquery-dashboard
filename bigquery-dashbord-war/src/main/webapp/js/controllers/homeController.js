@@ -66,12 +66,13 @@ app.controller('HomeController', function ($scope, $location, $http, $interval, 
                         if (data.jobComplete === true) {
                             $scope.stopListenResult();
                             $scope.resuls = eval(data);
+                            $location.path("/result");
                             console.log(data);
 
                         }
                     })
                     .error(function (error) {
-
+                        console.log("Erreur durant l'interrogation du job.")
                     });
             }, 1000);
         };
