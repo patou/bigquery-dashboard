@@ -1,4 +1,4 @@
-app.controller('HomeController', function($scope, $location, AuthService, $http, ngProgress) {
+app.controller('HomeController', function ($scope, $location, $http, $interval, AuthService, ngProgress) {
     ngProgress.reset();
     ngProgress.start();
     AuthService.refresh();
@@ -11,40 +11,46 @@ app.controller('HomeController', function($scope, $location, AuthService, $http,
             $scope.items = eval(data);
             ngProgress.complete();
         })
-        .error(function(error) {
+        .error(function (error) {
             console.log(error);
         });
 
-    $scope.loginPath = function() {
+    $scope.loginPath = function () {
         return "/login?path=" + $location.path();
     };
 
-    $scope.$watch(function () { return AuthService.getUser(); }, function () {
+    $scope.$watch(function () {
+        return AuthService.getUser();
+    }, function () {
         $scope.user = AuthService.getUser();
     });
 
     $scope.isAuthenticated = AuthService.isAuthenticated();
-    $scope.$watch(function () { return AuthService.isAuthenticated(); }, function () {
+    $scope.$watch(function () {
+        return AuthService.isAuthenticated();
+    }, function () {
         $scope.isAuthenticated = AuthService.isAuthenticated();
     });
 
     $scope.isAdmin = AuthService.isAdmin();
-    $scope.$watch(function () { return AuthService.isAuthenticated(); }, function () {
+    $scope.$watch(function () {
+        return AuthService.isAuthenticated();
+    }, function () {
         $scope.isAdmin = AuthService.isAdmin();
     });
 
 
-    $scope.launchRequest = function (index){
+    $scope.launchRequest = function (index) {
         var item = $scope.items[index].request;
         ngProgress.reset();
         ngProgress.start();
-        $http.post("/api/execute/query/",item)
-            .success(function (data){
+        $http.post("/api/execute/query/", item)
+            .success(function (data) {
                 console.log(data);
                 ngProgress.complete();
                 requestCallback(data.jobId);
             })
-            .error(function(error){
+            .error(function (error) {
                 console.log(error);
             });
     };
@@ -55,9 +61,9 @@ app.controller('HomeController', function($scope, $location, AuthService, $http,
             if (angular.isDefined(stop)) return;
 
             stop = $interval(function () {
-                $http.get("/api/execute/result/"+jobId)
+                $http.get("/api/execute/result/" + jobId)
                     .success(function (data) {
-                        if(data.jobComplete === true){
+                        if (data.jobComplete === true) {
                             $scope.stopFight();
                             $scope.resuls = eval(data);
 
@@ -68,7 +74,7 @@ app.controller('HomeController', function($scope, $location, AuthService, $http,
                     });
             }, 1000);
         };
-        $scope.stopListenResult = function() {
+        $scope.stopListenResult = function () {
             if (angular.isDefined(stop)) {
                 $interval.cancel(stop);
                 stop = undefined;
