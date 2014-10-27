@@ -41,7 +41,7 @@ app.controller('HomeController', function ($scope, $location, $http, $interval, 
 
 
     $scope.launchRequest = function (index) {
-        var item = $scope.items[index].request;
+        var item = $scope.items[index];
         ngProgress.reset();
         ngProgress.start();
 
