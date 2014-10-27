@@ -21,9 +21,10 @@ app.controller('ResultController', function ($http, $scope, $location, $interval
         $scope.startListenResult(jobId);
     }
     var requestCallback = function (reqId) {
-        $http.get("/api/service/query/", item)
+        $http.get("/api/service/query/"+reqId)
             .success(function (data) {
                 console.log(data);
+                $scope.libelle = data.libelle;
                 $http.post("/api/execute/query/", data.request)
                     .success(function (jobRef) {
                         console.log(jobRef);
