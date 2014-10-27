@@ -1,4 +1,4 @@
-app.config(function ($routeProvider, $locationProvider) {
+app.config(function ($routeProvider) {
     $routeProvider
         .when("/", {
             templateUrl: "templates/home.html",
@@ -8,7 +8,7 @@ app.config(function ($routeProvider, $locationProvider) {
             templateUrl: "templates/admin.html",
             controller: "BigQueryAdminController"
         })
-        .when("/result", {
+        .when("/result/:jobId", {
             templateUrl: "templates/result.html",
             controller: "ResultController"
         })

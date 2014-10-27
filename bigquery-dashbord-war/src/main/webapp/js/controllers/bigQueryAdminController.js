@@ -18,7 +18,7 @@ app.controller('BigQueryAdminController', function($scope, $http, ngProgress) {
         ngProgress.reset();
         ngProgress.start();
         $http.put("/api/service/query", item)
-            .success(function (data){
+            .success(function (){
                 ngProgress.complete();
             })
             .error(function(error) {
@@ -31,13 +31,13 @@ app.controller('BigQueryAdminController', function($scope, $http, ngProgress) {
         ngProgress.reset();
         ngProgress.start();
         $http.delete("/api/service/query/"+item.id)
-            .success(function (data) {
+            .success(function () {
                 for (var i = 0; i < $scope.items.length; i++) {
                     if ($scope.items[i].id === item.id) {
                         $scope.items.splice(i, 1);
                         break;
                     }
-                };
+                }
                 ngProgress.complete();
             })
             .error(function(error) {
@@ -51,7 +51,7 @@ app.controller('BigQueryAdminController', function($scope, $http, ngProgress) {
                 alert($scope.libelleText + " existe déjà!");
                 return;
             }
-        };
+        }
         ngProgress.reset();
         ngProgress.start();
         $scope.formDisabled = true;

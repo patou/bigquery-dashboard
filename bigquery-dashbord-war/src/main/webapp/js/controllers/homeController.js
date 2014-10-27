@@ -44,36 +44,16 @@ app.controller('HomeController', function ($scope, $location, $http, $interval, 
         var item = $scope.items[index].request;
         ngProgress.reset();
         ngProgress.start();
-        $location.path("/result");
+
         $http.post("/api/execute/query/", item)
             .success(function (data) {
                 console.log(data);
-                ngProgress.complete();
-                requestCallback(data.jobId);
+                $location.path("/result/"+data.jobId);
             })
             .error(function (error) {
                 console.log(error);
             });
     };
 
-    var requestCallback = function (jobId) {
-        $scope.startListenResult = function () {
-            $interval(function () {
-                $http.get("/api/execute/result/" + jobId)
-                    .success(function (data) {
-                        if (data.jobComplete === true) {
-                            $scope.resuls = eval(data);
-                            console.log(data);
-                        }
-                        else {
-                            requestCallback(jobId);
-                        }
-                    })
-                    .error(function (error) {
-                        console.log("Erreur durant l'interrogation du job.")
-                    });
-            }, 1000, 1);
-        };
-        $scope.startListenResult(jobId);
-    };
+
 });

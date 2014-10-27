@@ -1,16 +1,16 @@
-app.controller('HeaderController', function($scope, $location, AuthService, ngProgress) {
+app.controller('HeaderController', function($scope, $location, AuthService) {
     AuthService.refresh();
     $scope.isActive = function(viewLocation) {
         return viewLocation === $location.path();
     };
 
     $scope.isAuthenticated = AuthService.isAuthenticated();
-    $scope.$watch(function () { return AuthService.isAuthenticated(); }, function (newVal, oldVal) {
+    $scope.$watch(function () { return AuthService.isAuthenticated(); }, function () {
         $scope.isAuthenticated = AuthService.isAuthenticated();
     });
 
     $scope.isAdmin = AuthService.isAdmin();
-    $scope.$watch(function () { return AuthService.isAuthenticated(); }, function (newVal, oldVal) {
+    $scope.$watch(function () { return AuthService.isAuthenticated(); }, function () {
         $scope.isAdmin = AuthService.isAdmin();
     });
 
