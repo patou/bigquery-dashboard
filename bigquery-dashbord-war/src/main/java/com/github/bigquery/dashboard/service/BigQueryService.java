@@ -9,11 +9,17 @@ public final class BigQueryService {
     private BigQueryService() {}
     
     public static List<BigQuery> list() {
-    	return OfyService.ofy().load().type(BigQuery.class).list();
+        List<BigQuery> list = OfyService.ofy().load().type(BigQuery.class).project("libelle").list();
+        return list;
+    }
+
+    public static List<BigQuery> listAll() {
+        List<BigQuery> list = OfyService.ofy().load().type(BigQuery.class).list();
+        return list;
     }
 
     public static List<BigQuery> list(String libelle) {
-        return OfyService.ofy().load().type(BigQuery.class).filter("libelle >=", libelle).filter("libelle <", libelle + "\uFFFD").list();
+        return OfyService.ofy().load().type(BigQuery.class).filter("libelle >=", libelle).filter("libelle <", libelle + "\uFFFD").project("libelle").list();
     }
     
     public static void delete(Long itemid) {

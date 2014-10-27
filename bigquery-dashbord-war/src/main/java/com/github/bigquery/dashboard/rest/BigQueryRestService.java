@@ -38,6 +38,17 @@ public class BigQueryRestService {
         return null;
     }
 
+    @GET
+    @Path("/queries/all")
+    public List<BigQuery> getBigQueriesFull() {
+        final AppUser user = ServletUtils.getUserAuthenticated();
+        if(user != null){
+            LOGGER.info("List");
+            return BigQueryService.listAll();
+        }
+        return null;
+    }
+
     @PUT
     @Path("/query")
     public BigQuery addQuery(BigQuery bigQuery) {

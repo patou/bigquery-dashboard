@@ -4,7 +4,7 @@ app.controller('BigQueryAdminController', function($scope, $http, ngProgress) {
     $scope.items = {};
     $scope.formDisabled = true;
 
-    $http.get("/api/service/queries")
+    $http.get("/api/service/queries/all")
         .success(function (data) {
             ngProgress.complete();
             $scope.items = eval(data);
