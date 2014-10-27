@@ -45,15 +45,6 @@ app.controller('HomeController', function ($scope, $location, $http, $interval, 
         ngProgress.reset();
         ngProgress.start();
 
-        $http.post("/api/execute/query/", item)
-            .success(function (data) {
-                console.log(data);
-                $location.path("/result/"+data.jobId);
-            })
-            .error(function (error) {
-                console.log(error);
-            });
+        $location.path("/result/"+item.id);
     };
-
-
 });
