@@ -4,7 +4,11 @@
             <a ng-repeat="item in items | orderBy:'libelle'" href="javascript: ;" class="list-group-item" ng-click="launchRequest($index)" title="{{item.request}}">{{item.libelle}}</a>
         </div>
 	</p>
-	<p ng-hide="isAuthenticated" class="lead">{{'WELCOME' | translate}}
-		<a ng-href="{{loginPath()}}">{{'LOGIN_ACTION' | translate}}</a>.
-	</p>
+
+    <div ng-hide="isAuthenticated" class="jumbotron">
+        <h1>{{'WELCOME' | translate}}</h1>
+        <p>
+            <a class="btn btn-lg btn-primary" ng-href="{{loginPath()}}" role="button">{{'LOGIN_ACTION' | translate}}</a>
+        </p>
+    </div>
 </div>
