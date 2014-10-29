@@ -1,5 +1,5 @@
-<datastore-indexes>
-    <datastore-index kind="BigQuery" ancestor="false" source="auto">
+<datastore-indexes autoGenerate="true">
+    <datastore-index kind="BigQuery" ancestor="false" source="auto" >
         <property name="comment" direction="asc"/>
         <property name="label" direction="asc"/>
     </datastore-index>
