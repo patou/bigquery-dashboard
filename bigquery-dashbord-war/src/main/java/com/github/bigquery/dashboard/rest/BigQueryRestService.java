@@ -54,7 +54,7 @@ public class BigQueryRestService {
     public BigQuery addQuery(BigQuery bigQuery) {
         final AppUser user = ServletUtils.getUserAuthenticated();
         if (user != null) {
-            LOGGER.info("Put " + bigQuery.getLibelle());
+            LOGGER.info("Put " + bigQuery.getLabel());
             return BigQueryService.createOrUpdate(bigQuery);
         }
         return null;

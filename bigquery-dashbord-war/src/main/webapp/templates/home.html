@@ -1,12 +1,29 @@
 <div class="home">
-	<p ng-show="isAuthenticated" class="lead">{{'REQUESTS_LIST' | translate}}
-		<div class="list-group">
-            <a ng-repeat="item in items | orderBy:'libelle'" href="javascript: ;" class="list-group-item" ng-click="launchRequest($index)" title="{{item.request}}">{{item.libelle}}</a>
+    <p ng-show="isAuthenticated" class="lead">
+
+    <h1>{{'REQUESTS_LIST' | translate}}</h1>
+
+    <div class="form-horizontal row" role="form">
+        <div class="form-group has-feedback col-md-3 col-md-offset-2">
+            <label class="control-label sr-only" for="searchText">{{'SEARCH_FILTER' | translate}}</label>
+            <input type="search" class="input-sm  form-control" id="searchText" ng-model="searchText"
+                   placeholder="{{'SEARCH_FILTER' | translate}}">
+            <span class="glyphicon glyphicon-search form-control-feedback"></span>
         </div>
-	</p>
+    </div>
+    <div class="list-group">
+        <a ng-repeat="item in items | filter:searchText | orderBy:'label'" href="javascript: ;" class="list-group-item"
+           ng-click="launchRequest($index)">
+            <h4 class="list-group-item-heading">{{item.label}}</h4>
+            <p class="list-group-item-text">{{item.comment}}</p>
+        </a>
+    </div>
+
+    </p>
 
     <div ng-hide="isAuthenticated" class="jumbotron">
         <h1>{{'WELCOME' | translate}}</h1>
+
         <p>
             <a class="btn btn-lg btn-primary" ng-href="{{loginPath()}}" role="button">{{'LOGIN_ACTION' | translate}}</a>
         </p>

@@ -24,7 +24,8 @@ app.controller('ResultController', function ($http, $scope, $location, $interval
         $http.get("/api/service/query/"+reqId)
             .success(function (data) {
                 console.log(data);
-                $scope.libelle = data.libelle;
+                $scope.label = data.label;
+                $scope.comment = data.comment;
                 $http.post("/api/execute/query/", data.request)
                     .success(function (jobRef) {
                         console.log(jobRef);

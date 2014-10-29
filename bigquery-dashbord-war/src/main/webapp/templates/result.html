@@ -1,8 +1,10 @@
 <div class="home">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <h1>{{libelle}}</h1>
-            <table class="table">
+            <div class="page-header">
+                <h1>{{label}} <small>{{comment}}</small></h1>
+            </div>
+            <table class="table table-striped table-hover table-condensed">
                 <thead>
                 <tr>
                     <th ng-repeat="result in results.schema.fields">{{result.name}}</th>

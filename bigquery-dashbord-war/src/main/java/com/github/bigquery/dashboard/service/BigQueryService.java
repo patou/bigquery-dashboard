@@ -9,7 +9,7 @@ public final class BigQueryService {
     private BigQueryService() {}
     
     public static List<BigQuery> list() {
-        List<BigQuery> list = OfyService.ofy().load().type(BigQuery.class).project("libelle").list();
+        List<BigQuery> list = OfyService.ofy().load().type(BigQuery.class).project("label", "comment").list();
         return list;
     }
 
@@ -19,7 +19,7 @@ public final class BigQueryService {
     }
 
     public static List<BigQuery> list(String libelle) {
-        return OfyService.ofy().load().type(BigQuery.class).filter("libelle >=", libelle).filter("libelle <", libelle + "\uFFFD").project("libelle").list();
+        return OfyService.ofy().load().type(BigQuery.class).filter("label >=", libelle).filter("label <", libelle + "\uFFFD").project("label").list();
     }
     
     public static void delete(Long itemid) {

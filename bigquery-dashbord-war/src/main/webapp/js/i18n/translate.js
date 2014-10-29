@@ -13,7 +13,10 @@ app.config(function ($translateProvider) {
         REQUEST : "Requête",
         VALIDATE : "Valider",
         CANCEL : "Annuler",
-        DELETE : "Supprimer"
+        DELETE : "Supprimer",
+        HELP_REQUEST_COMMENT : "Ajoutez une description",
+        REQUEST_COMMENT : "Description",
+        SEARCH_FILTER : "Filtrer les résultats"
 
     });
     $translateProvider.preferredLanguage('fr');

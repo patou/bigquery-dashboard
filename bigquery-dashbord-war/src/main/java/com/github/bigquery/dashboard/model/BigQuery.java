@@ -1,6 +1,7 @@
 package com.github.bigquery.dashboard.model;
 
 import com.google.gson.annotations.Expose;
+import com.googlecode.objectify.annotation.AlsoLoad;
 import com.googlecode.objectify.annotation.Cache;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
@@ -18,7 +19,12 @@ public class BigQuery {
 
     @Expose
     @Index
-    private String libelle;
+    @AlsoLoad("libelle")
+    private String label;
+
+    @Expose
+    @Index
+    private String comment;
 
     @Expose
     private String request;
@@ -31,12 +37,12 @@ public class BigQuery {
         this.id = id;
     }
 
-    public String getLibelle() {
-        return libelle;
+    public String getLabel() {
+        return label;
     }
 
-    public void setLibelle(String libelle) {
-        this.libelle = libelle;
+    public void setLabel(String label) {
+        this.label = label;
     }
 
     public String getRequest() {
@@ -45,5 +51,13 @@ public class BigQuery {
 
     public void setRequest(String request) {
         this.request = request;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public String getComment() {
+        return comment;
     }
 }

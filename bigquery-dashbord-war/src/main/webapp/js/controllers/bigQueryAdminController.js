@@ -47,19 +47,20 @@ app.controller('BigQueryAdminController', function($scope, $http, ngProgress) {
 
     $scope.addNewItem = function() {
         for (var i = 0; i < $scope.items.length; i++) {
-            if ($scope.items[i].libelle.toUpperCase() === $scope.libelleText.toUpperCase()) {
-                alert($scope.libelleText + " existe déjà!");
+            if ($scope.items[i].label.toUpperCase() === $scope.labelText.toUpperCase()) {
+                alert($scope.labelText + " existe déjà!");
                 return;
             }
         }
         ngProgress.reset();
         ngProgress.start();
         $scope.formDisabled = true;
-        var item = {libelle: $scope.libelleText, request: $scope.requestText};
+        var item = {label: $scope.labelText, request: $scope.requestText, comment: $scope.commentText};
         $http.put("/api/service/query", item)
             .success(function (data) {
                 $scope.items.push(data);
-                $scope.libelleText = "";
+                $scope.labelText = "";
+                $scope.commentText = "";
                 $scope.requestText = "";
                 $scope.formDisabled = false;
                 ngProgress.complete();
