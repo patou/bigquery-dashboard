@@ -1,7 +1,7 @@
 app.controller('HomeController', function ($scope, $location, $http, $interval, AuthService, ngProgress) {
+    AuthService.refresh();
     ngProgress.reset();
     ngProgress.start();
-    AuthService.refresh();
     $scope.user = AuthService.getUser();
     $scope.items = {};
     $scope.resuls = {};

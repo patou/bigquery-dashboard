@@ -3,14 +3,16 @@
         <h1>Administration</h1>
     </div>
     <div class="row">
-        <a href="/#/edit" name="btnAjouter" class="btn btn-info">Ajouter une requête</a>
+        <p><a href="/#/edit" name="btnAjouter" class="btn btn-info">Ajouter une requête</a></p>
     </div>
-    <div class="form-horizontal row" role="form">
-        <div class="form-group has-feedback col-md-3 col-md-offset-2">
-            <label class="control-label sr-only" for="filter">Filtrer les résultats</label>
-            <input type="search" class="input-sm  form-control" id="filter" ng-model="searchText"
-                   placeholder="{{'SEARCH_FILTER' | translate}}">
-            <span class="glyphicon glyphicon-search form-control-feedback"></span>
+    <div class="row">
+        <div class="form-horizontal row" role="form">
+            <div class="form-group has-feedback col-8 col-md-offset-2">
+                <label class="control-label sr-only" for="filter">Filtrer les résultats</label>
+                <input type="search" class="input-sm  form-control" id="filter" ng-model="searchText"
+                       placeholder="Filtrer la recherche">
+                <span class="glyphicon glyphicon-search form-control-feedback"></span>
+            </div>
         </div>
     </div>
 
@@ -26,9 +28,9 @@
                 </thead>
                 <tbody>
                 <tr ng-repeat="item in items | filter:searchText | orderBy:'label'">
-                    <td>Libellé</td>
-                    <td>Requête</td>
-                    <td>Description</td>
+                    <td>{{item.label}}</td>
+                    <td>{{item.request}}</td>
+                    <td>{{item.comment}}</td>
                     <td>
                         <button ng-click="del(item)" id="btnSupprimer" name="btnSupprimer" class="btn btn-danger">
                             Supprimer
