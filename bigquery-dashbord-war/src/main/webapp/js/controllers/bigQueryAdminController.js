@@ -15,16 +15,7 @@ app.controller('BigQueryAdminController', function($scope, $http, ngProgress) {
         });
 
     $scope.update = function(item) {
-        ngProgress.reset();
-        ngProgress.start();
-        $http.put("/api/service/query", item)
-            .success(function (){
-                ngProgress.complete();
-            })
-            .error(function(error) {
-                console.log(error);
-            });
-
+        window.location = "/#/edit/"+item.id;
     };
 
     $scope.del = function(item) {
@@ -42,32 +33,6 @@ app.controller('BigQueryAdminController', function($scope, $http, ngProgress) {
             })
             .error(function(error) {
                 console.log(error);
-            });
-    };
-
-    $scope.addNewItem = function() {
-        for (var i = 0; i < $scope.items.length; i++) {
-            if ($scope.items[i].label.toUpperCase() === $scope.labelText.toUpperCase()) {
-                alert($scope.labelText + " existe déjà!");
-                return;
-            }
-        }
-        ngProgress.reset();
-        ngProgress.start();
-        $scope.formDisabled = true;
-        var item = {label: $scope.labelText, request: $scope.requestText, comment: $scope.commentText};
-        $http.put("/api/service/query", item)
-            .success(function (data) {
-                $scope.items.push(data);
-                $scope.labelText = "";
-                $scope.commentText = "";
-                $scope.requestText = "";
-                $scope.formDisabled = false;
-                ngProgress.complete();
-            })
-            .error(function(error) {
-                console.log(error);
-                $scope.formDisabled = false;
             });
     };
 });

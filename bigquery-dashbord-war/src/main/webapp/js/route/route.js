@@ -12,5 +12,13 @@ app.config(function ($routeProvider) {
             templateUrl: "templates/result.html",
             controller: "ResultController"
         })
+        .when("/edit/:reqId", {
+            templateUrl: "templates/edit.html",
+            controller: "EditController"
+        })
+        .when("/edit", {
+            templateUrl: "templates/edit.html",
+            controller: "EditController"
+        })
         .otherwise({ redirectTo: '/'});
 });

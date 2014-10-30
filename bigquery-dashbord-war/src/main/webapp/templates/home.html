@@ -1,11 +1,11 @@
 <div class="home">
     <p ng-show="isAuthenticated" class="lead">
 
-    <h1>{{'REQUESTS_LIST' | translate}}</h1>
+    <h1>Liste des requêtes</h1>
 
     <div class="form-horizontal row" role="form">
         <div class="form-group has-feedback col-md-3 col-md-offset-2">
-            <label class="control-label sr-only" for="searchText">{{'SEARCH_FILTER' | translate}}</label>
+            <label class="control-label sr-only" for="searchText">Filtrer les résultats</label>
             <input type="search" class="input-sm  form-control" id="searchText" ng-model="searchText"
                    placeholder="{{'SEARCH_FILTER' | translate}}">
             <span class="glyphicon glyphicon-search form-control-feedback"></span>
@@ -14,18 +14,18 @@
     <div class="list-group">
         <a ng-repeat="item in items | filter:searchText | orderBy:'label'" href="javascript: ;" class="list-group-item"
            ng-click="launchRequest($index)">
-            <h4 class="list-group-item-heading">{{item.label}}</h4>
-            <p class="list-group-item-text">{{item.comment}}</p>
+            <h4 class="list-group-item-heading">Libellé</h4>
+            <p class="list-group-item-text">Description</p>
         </a>
     </div>
 
     </p>
 
     <div ng-hide="isAuthenticated" class="jumbotron">
-        <h1>{{'WELCOME' | translate}}</h1>
+        <h1>Bievenue sur BigQuery DashBoard</h1>
 
         <p>
-            <a class="btn btn-lg btn-primary" ng-href="{{loginPath()}}" role="button">{{'LOGIN_ACTION' | translate}}</a>
+            <a class="btn btn-lg btn-primary" ng-href="{{loginPath()}}" role="button">Se connecter</a>
         </p>
     </div>
 </div>
