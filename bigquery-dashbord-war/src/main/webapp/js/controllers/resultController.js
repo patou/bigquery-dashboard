@@ -1,5 +1,21 @@
-app.controller('ResultController', function ($http, $scope, $location, $interval, $routeParams, AuthService) {
+app.controller('ResultController', function ($http, $scope, $location, $interval, $timeout, $routeParams, AuthService) {
     AuthService.refresh();
+
+
+    $scope.counterMilli = 0;
+    $scope.counterSec = 0;
+
+    $scope.onTimeout = function(){
+        $scope.counterMilli++;
+        if($scope.counterMilli === 10){
+            $scope.counterMilli = 0;
+            $scope.counterSec++;
+        }
+        timer = $timeout($scope.onTimeout,100);
+    };
+    var timer = $timeout($scope.onTimeout,100);
+
+
     var loadResult = function (jobId) {
         $scope.startListenResult = function () {
             $interval(function () {
@@ -7,6 +23,7 @@ app.controller('ResultController', function ($http, $scope, $location, $interval
                     .success(function (data) {
                         if (data.jobComplete === true) {
                             $scope.results = eval(data);
+                            $timeout.cancel(timer);
                             console.log(data);
                         }
                         else {
@@ -19,7 +36,7 @@ app.controller('ResultController', function ($http, $scope, $location, $interval
             }, 1000, 1);
         };
         $scope.startListenResult(jobId);
-    }
+    };
     var requestCallback = function (reqId) {
         $http.get("/api/service/query/"+reqId)
             .success(function (data) {
