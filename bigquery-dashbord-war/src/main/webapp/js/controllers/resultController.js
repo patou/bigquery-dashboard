@@ -1,6 +1,5 @@
-app.controller('ResultController', function ($http, $scope, $location, $interval, $timeout, $routeParams, AuthService) {
+app.controller('ResultController', function ($http, $scope, $location, $interval, $timeout, $routeParams, AuthService, ngProgress) {
     AuthService.refresh();
-
 
     $scope.counterMilli = 0;
     $scope.counterSec = 0;
@@ -24,6 +23,7 @@ app.controller('ResultController', function ($http, $scope, $location, $interval
                         if (data.jobComplete === true) {
                             $scope.results = eval(data);
                             $timeout.cancel(timer);
+                            ngProgress.complete();
                             console.log(data);
                         }
                         else {
