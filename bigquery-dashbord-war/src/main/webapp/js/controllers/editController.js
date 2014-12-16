@@ -1,4 +1,4 @@
-app.controller('EditController', function ($http, $scope, $location, $interval, $routeParams, AuthService) {
+app.controller('EditCtrl', function ($http, $scope, $location, $interval, $routeParams, AuthService) {
     AuthService.refresh();
     $scope.items = {};
     $scope.result = {};

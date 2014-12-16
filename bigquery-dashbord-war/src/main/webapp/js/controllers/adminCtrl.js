@@ -1,12 +1,9 @@
-app.controller('BigQueryAdminController', function($scope, $http, ngProgress) {
-    ngProgress.reset();
-    ngProgress.start();
+app.controller('AdminCtrl', function($scope, $http) {
     $scope.items = {};
     $scope.formDisabled = true;
 
     $http.get("/api/service/queries/all")
         .success(function (data) {
-            ngProgress.complete();
             $scope.items = eval(data);
             $scope.formDisabled = false;
         })
@@ -19,8 +16,6 @@ app.controller('BigQueryAdminController', function($scope, $http, ngProgress) {
     };
 
     $scope.del = function(item) {
-        ngProgress.reset();
-        ngProgress.start();
         $http.delete("/api/service/query/"+item.id)
             .success(function () {
                 for (var i = 0; i < $scope.items.length; i++) {
@@ -29,7 +24,6 @@ app.controller('BigQueryAdminController', function($scope, $http, ngProgress) {
                         break;
                     }
                 }
-                ngProgress.complete();
             })
             .error(function(error) {
                 console.log(error);

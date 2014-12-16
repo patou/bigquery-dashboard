@@ -1,0 +1,42 @@
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+                BigQuery Dashboard
+                <small>Requests</small>
+            </h1>
+        </div>
+    </div>
+    <!-- /.row -->
+    <div class="row">
+
+        <div class="col-lg-12">
+            <div class="form-group input-group">
+                <input type="text" class="form-control" ng-model="searchText">
+                <span class="input-group-btn"><button class="btn btn-default" type="button"><i class="fa fa-search"></i>
+                </button></span>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-fw fa-bar-chart-o"></i> Requests Panel</h3>
+                </div>
+                <div class="list-group">
+                    <a ng-repeat="item in items | filter:searchText | orderBy:'label'" href="javascript: ;" class="list-group-item"
+                       ng-click="launchRequest($index)">
+                        <h4 class="list-group-item-heading">{{item.label}}</h4>
+                        <p class="list-group-item-text">{{item.comment}}</p>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row" ng-show="isAuthenticated && isAdmin">
+        <div class="col-lg-12">
+            <div class="form-group input-group">
+                <a class="btn btn-lg btn-primary" ng-href="#/add">Add request</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,7 +1,4 @@
-app.controller('HomeController', function ($scope, $location, $http, $interval, AuthService, ngProgress) {
-    AuthService.refresh();
-    ngProgress.reset();
-    ngProgress.start();
+app.controller('RequestsCtrl', function ($scope, $location, $http, $interval, AuthService) {
     $scope.user = AuthService.getUser();
     $scope.items = {};
     $scope.resuls = {};
@@ -9,7 +6,6 @@ app.controller('HomeController', function ($scope, $location, $http, $interval, 
     $http.get("/api/service/queries")
         .success(function (data) {
             $scope.items = eval(data);
-            ngProgress.complete();
         })
         .error(function (error) {
             console.log(error);
@@ -42,9 +38,6 @@ app.controller('HomeController', function ($scope, $location, $http, $interval, 
 
     $scope.launchRequest = function (index) {
         var item = $scope.items[index];
-        ngProgress.reset();
-        ngProgress.start();
-
         $location.path("/result/"+item.id);
     };
 });
