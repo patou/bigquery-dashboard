@@ -20,6 +20,7 @@ public class ExecuteBigQueryService {
         QueryRequest request = new QueryRequest();
         request.setQuery(query);
         request.setTimeoutMs(0L);
+        request.setUseQueryCache(true);
         QueryResponse result = bigquery.jobs().query(Config.BIGQUERY_PROJECTID, request).execute();
         return result.getJobReference();
     }

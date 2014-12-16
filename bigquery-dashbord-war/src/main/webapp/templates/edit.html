@@ -13,17 +13,16 @@
 
             <form class="form-horizontal" ng-disabled="formDisabled">
                 <fieldset>
-                    <legend>Ajouter une nouvelle requête</legend>
 
                     <div class="control-group">
-                        <label class="control-label" for="labelText">Libellé</label>
+                        <label class="control-label" for="labelText">Label</label>
 
                         <div class="controls">
                             <input ng-model="labelText" id="labelText" name="labelText" type="text"
                                    placeholder="Libellé" class="input-xlarge form-control"
                                    required="">
 
-                            <p class="help-block">Ajouter un libellé</p>
+                            <p class="help-block">Request's title</p>
                         </div>
                     </div>
 
@@ -35,16 +34,18 @@
                                    placeholder="Description" class="input-xlarge form-control"
                                    required="">
 
-                            <p class="help-block">Ajouter une déscription</p>
+                            <p class="help-block">Request's meaning</p>
                         </div>
                     </div>
 
                     <div class="control-group">
-                        <label class="control-label" for="requestText">Requête</label>
+                        <label class="control-label" for="requestText">Request</label>
 
                         <div class="controls">
                             <textarea ng-model="requestText" id="requestText" name="requestText"
                                       class="input-xlarge form-control" rows="5"></textarea>
+
+                            <p class="help-block">Put a valid bigquery request <a href="https://cloud.google.com/bigquery/query-reference">look on the query reference</a></p>
                         </div>
                     </div>
 
@@ -53,10 +54,10 @@
 
                         <div class="controls">
                             <button id="btnValider" name="btnValider" class="btn btn-primary" ng-click="addNewItem()">
-                                Valider
+                                Save
                             </button>
                             <button id="btnAnnuler" name="btnAnnuler" class="btn btn-danger" ng-click="cancel()">
-                                Annuler
+                                Cancel
                             </button>
                         </div>
                     </div>

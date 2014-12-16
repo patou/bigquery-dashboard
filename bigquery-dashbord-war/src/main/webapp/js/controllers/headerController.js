@@ -1,5 +1,6 @@
 app.controller('HeaderController', function($scope, $location, AuthService) {
     AuthService.refresh();
+    $scope.user = AuthService.getUser();
     $scope.isActive = function(viewLocation) {
         return viewLocation === $location.path();
     };
