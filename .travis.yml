@@ -6,4 +6,4 @@ install:
 
 #command to deploy
 after_success:
-  - echo $PASS | mvn appengine:update
+  - cd bigquery-dashbord-war && echo $PASS | mvn appengine:update
