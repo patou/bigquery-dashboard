@@ -38,6 +38,17 @@ public class ExecuteRestService {
         return null;
     }
 
+    @POST
+    @Path("/query/try")
+    public String tryExecute(String query) throws GeneralSecurityException, IOException {
+        final AppUser user = ServletUtils.getUserAuthenticated();
+        if(user != null){
+            LOGGER.info("Execute " + query);
+            return ExecuteBigQueryService.tryQuery(query);
+        }
+        return null;
+    }
+
     @GET
     @Path("/result/{job_id}")
     public GetQueryResultsResponse getResult(@PathParam("job_id") String jobId) throws GeneralSecurityException, IOException {

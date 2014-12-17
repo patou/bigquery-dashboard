@@ -25,6 +25,15 @@ public class ExecuteBigQueryService {
         return result.getJobReference();
     }
 
+    public static String tryQuery(String query) throws GeneralSecurityException, IOException {
+        Bigquery bigquery = CredentialsUtils.getBigquery();
+        QueryRequest request = new QueryRequest();
+        request.setQuery(query);
+        request.setDryRun(true);
+        QueryResponse result = bigquery.jobs().query(Config.BIGQUERY_PROJECTID, request).execute();
+        return "OK";
+    }
+
     public static GetQueryResultsResponse getResult(String jobId) throws GeneralSecurityException, IOException {
         Bigquery bigquery = CredentialsUtils.getBigquery();
         GetQueryResultsResponse result = bigquery.jobs().getQueryResults(Config.BIGQUERY_PROJECTID, jobId).execute();
