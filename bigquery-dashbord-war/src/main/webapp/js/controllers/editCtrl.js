@@ -52,12 +52,12 @@ app.controller('EditCtrl', function ($http, $scope, $location, $interval, $route
         $http.post("/api/execute/query/", item.request)
             .success(function () {
                 $scope.status.message = "Requête valide";
-                $scope.status.isOK = true;
+                $scope.status.isOk = true;
                 $scope.isRunning = false;
             })
             .error(function (error) {
                 $scope.status.message = error;
-                $scope.status.isOK = false;
+                $scope.status.isOk = false;
                 $scope.isRunning = false;
             });
 
