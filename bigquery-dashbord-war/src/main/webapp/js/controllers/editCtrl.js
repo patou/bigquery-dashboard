@@ -3,11 +3,16 @@ app.controller('EditCtrl', function ($http, $scope, $location, $interval, $route
     $scope.items = {};
     $scope.result = {};
     $scope.formDisabled = true;
+    $scope.isRunning = false;
+    $scope.status = {
+        isOk: "",
+        message: ""
+    };
 
-    if($routeParams.reqId){
+    if ($routeParams.reqId) {
 
-        $http.get("/api/service/query/"+$routeParams.reqId)
-            .success(function(data){
+        $http.get("/api/service/query/" + $routeParams.reqId)
+            .success(function (data) {
                 $scope.formDisabled = false;
                 $scope.labelText = data.label;
                 $scope.commentText = data.comment;
@@ -16,7 +21,7 @@ app.controller('EditCtrl', function ($http, $scope, $location, $interval, $route
             });
     }
 
-    $scope.addNewItem = function() {
+    $scope.addNewItem = function () {
         var item = {label: $scope.labelText, request: $scope.requestText, comment: $scope.commentText, id: $scope.id};
         $http.put("/api/service/query", item)
             .success(function (data) {
@@ -27,18 +32,36 @@ app.controller('EditCtrl', function ($http, $scope, $location, $interval, $route
                 $scope.formDisabled = false;
                 window.location.href = '/#/admin';
             })
-            .error(function(error) {
+            .error(function (error) {
                 console.log(error);
                 $scope.formDisabled = false;
             });
     };
 
-    $scope.cancel = function() {
+    $scope.cancel = function () {
         $scope.labelText = "";
         $scope.commentText = "";
         $scope.requestText = "";
         $scope.formDisabled = false;
         window.location.href = '/#/admin';
     };
+
+    $scope.test = function () {
+        $scope.isRunning = true;
+        var item = {label: $scope.labelText, request: $scope.requestText, comment: $scope.commentText, id: $scope.id};
+        $http.post("/api/execute/query/", item.request)
+            .success(function (jobRef) {
+                console.log(jobRef);
+                $scope.status.message = "Requête valide";
+                $scope.status.isOK = true;
+                $scope.isRunning = false;
+            })
+            .error(function (error) {
+                $scope.status.message = error;
+                $scope.status.isOK = false;
+                $scope.isRunning = false;
+            });
+
+    }
 
 });

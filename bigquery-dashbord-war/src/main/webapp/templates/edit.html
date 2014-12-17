@@ -19,7 +19,7 @@
 
                         <div class="controls">
                             <input ng-model="labelText" id="labelText" name="labelText" type="text"
-                                   placeholder="Libellé" class="input-xlarge form-control"
+                                   placeholder="Label" class="input-xlarge form-control"
                                    required="">
 
                             <p class="help-block">Request's title</p>
@@ -59,6 +59,10 @@
                             <button id="btnAnnuler" name="btnAnnuler" class="btn btn-danger" ng-click="cancel()">
                                 Cancel
                             </button>
+                            <button type="submit" class="btn btn-success" ng-click="test()">
+                                <i ng-hide="isRunning" class="glyphicon glyphicon-play" ></i>
+                                <i ng-show="isRunning" class="glyphicon glyphicon-refresh spin" ></i>
+                            </button>
                         </div>
                     </div>
 
@@ -66,5 +70,14 @@
             </form>
 
         </div>
+    </div>
+    <div class="row">
+        <div class="alert alert-success" ng-show="status.isOk === true">
+            {{status.message}}
+        </div>
+        <div class="alert alert-danger" ng-show="status.isOk === false">
+            {{status.message}}
+        </div>
+
     </div>
 </div>
