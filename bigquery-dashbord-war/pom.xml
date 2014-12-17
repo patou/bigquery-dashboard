@@ -88,7 +88,7 @@
         <dependency>
             <groupId>com.google.apis</groupId>
             <artifactId>google-api-services-bigquery</artifactId>
-            <version>v2-rev171-1.19.0</version>
+            <version>v2-rev184-1.19.0</version>
         </dependency>
 		
         <!-- Test Dependencies -->

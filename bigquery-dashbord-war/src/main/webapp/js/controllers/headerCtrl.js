@@ -6,13 +6,12 @@ app.controller('HeaderCtrl', function($scope, $location, AuthService) {
     };
 
     $scope.isAuthenticated = AuthService.isAuthenticated();
-    $scope.$watch(function () { return AuthService.isAuthenticated(); }, function () {
-        $scope.isAuthenticated = AuthService.isAuthenticated();
-    });
-
     $scope.isAdmin = AuthService.isAdmin();
-    $scope.$watch(function () { return AuthService.isAuthenticated(); }, function () {
+    $scope.user = AuthService.getUser();
+    $scope.$watch(function () { return AuthService.getUser(); }, function () {
+        $scope.isAuthenticated = AuthService.isAuthenticated();
         $scope.isAdmin = AuthService.isAdmin();
+        $scope.user = AuthService.getUser();
     });
 
     $scope.user = AuthService.getUser();
