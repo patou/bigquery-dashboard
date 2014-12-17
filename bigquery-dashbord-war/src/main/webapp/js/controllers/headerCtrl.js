@@ -1,6 +1,6 @@
 app.controller('HeaderCtrl', function($scope, $location, AuthService) {
     AuthService.refresh();
-    $scope.user = AuthService.getUser();
+
     $scope.isActive = function(viewLocation) {
         return viewLocation === $location.path();
     };
@@ -13,6 +13,11 @@ app.controller('HeaderCtrl', function($scope, $location, AuthService) {
     $scope.isAdmin = AuthService.isAdmin();
     $scope.$watch(function () { return AuthService.isAuthenticated(); }, function () {
         $scope.isAdmin = AuthService.isAdmin();
+    });
+
+    $scope.user = AuthService.getUser();
+    $scope.$watch(function () { return AuthService.getUser(); }, function () {
+        $scope.user = AuthService.getUser();
     });
 
     $scope.loginPath = function() {

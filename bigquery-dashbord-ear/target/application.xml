@@ -3,7 +3,7 @@
   <display-name>bigquery-dashbord-ear</display-name>
   <module>
     <web>
-      <web-uri>bigquery-dashbord-war-1.0-SNAPSHOT.war</web-uri>
+      <web-uri>bigquery-dashbord-war-1.1.0-SNAPSHOT.war</web-uri>
       <context-root>/bigquery-dashbord-war</context-root>
     </web>
   </module>
