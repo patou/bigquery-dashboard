@@ -1,4 +1,4 @@
-app.controller('HeaderController', function($scope, $location, AuthService) {
+app.controller('HeaderCtrl', function($scope, $location, AuthService) {
     AuthService.refresh();
     $scope.user = AuthService.getUser();
     $scope.isActive = function(viewLocation) {

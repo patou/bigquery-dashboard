@@ -1,4 +1,4 @@
-app.controller('ResultController', function ($http, $scope, $location, $interval, $timeout, $routeParams, AuthService, ngProgress) {
+app.controller('ResultCtrl', function ($http, $scope, $location, $interval, $timeout, $routeParams, AuthService, ngProgress) {
     AuthService.refresh();
 
     $scope.counterMilli = 0;

@@ -22,7 +22,7 @@ app.config(function ($routeProvider) {
         })
         .when("/result/:reqId", {
             templateUrl: "templates/result.html",
-            controller: "ResultController"
+            controller: "ResultCtrl"
         })
         .when("/edit/:reqId", {
             templateUrl: "templates/edit.html",
