@@ -72,10 +72,10 @@
         </div>
     </div>
     <div class="row">
-        <div class="alert alert-success" ng-show="status.isOk === true">
+        <div class="alert alert-success" ng-show="status.isOk && status.message !== ''">
             {{status.message}}
         </div>
-        <div class="alert alert-danger" ng-show="status.isOk === false">
+        <div class="alert alert-danger" ng-show="!status.isOk && status.message !== ''">
             {{status.message}}
         </div>
 

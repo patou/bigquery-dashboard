@@ -50,8 +50,7 @@ app.controller('EditCtrl', function ($http, $scope, $location, $interval, $route
         $scope.isRunning = true;
         var item = {label: $scope.labelText, request: $scope.requestText, comment: $scope.commentText, id: $scope.id};
         $http.post("/api/execute/query/", item.request)
-            .success(function (jobRef) {
-                console.log(jobRef);
+            .success(function () {
                 $scope.status.message = "Requête valide";
                 $scope.status.isOK = true;
                 $scope.isRunning = false;
