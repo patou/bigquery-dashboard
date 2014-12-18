@@ -313,11 +313,10 @@
                     </div>
 
                     <div class="control-group">
-                        <label class="control-label" for="requestText">Request</label>
+                        <label class="control-label">Request</label>
 
                         <div class="controls">
-                            <textarea ng-model="requestText" id="requestText" name="requestText"
-                                      class="input-xlarge form-control" rows="5"></textarea>
+                            <ui-codemirror ng-model="requestText" ui-codemirror-opts="editorOptions" ></ui-codemirror>
 
                             <p class="help-block">Put a valid bigquery request <a href="https://cloud.google.com/bigquery/query-reference">look on the query reference</a></p>
                         </div>
@@ -327,7 +326,7 @@
                     <button type="button" class="btn btn-default pull-right" aria-label="Add param">
                         <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
                     </button>
-                    <label class="control-label bott" for="requestText">Params</label>
+                    <label class="control-label bott">Params</label>
                     <div class="controls clearfix top10">
                         <div class="row">
                             <div class="col-xs-6 col-md-3">

@@ -8,6 +8,17 @@ app.controller('EditCtrl', function ($http, $scope, $location, $interval, $route
         isOk: "",
         message: ""
     };
+    $scope.editorOptions = {
+        lineWrapping : true,
+        lineNumbers: true,
+        indentWithTabs: true,
+        smartIndent: true,
+        lineNumbers: true,
+        matchBrackets : true,
+        autofocus: true,
+        extraKeys: {"Ctrl-Space": "autocomplete"},
+        mode: 'text/x-sql'
+    };
 
     if ($routeParams.reqId) {
 
@@ -52,7 +63,7 @@ app.controller('EditCtrl', function ($http, $scope, $location, $interval, $route
     $scope.test = function () {
         $scope.isRunning = true;
         var item = {label: $scope.labelText, request: $scope.requestText, comment: $scope.commentText, id: $scope.id, icons: $scope.icons};
-        $http.post("/api/execute/query/", item.request)
+        $http.post("/api/execute/query/try", item.request)
             .success(function () {
                 $scope.status.message = "Requête valide";
                 $scope.status.isOk = true;
