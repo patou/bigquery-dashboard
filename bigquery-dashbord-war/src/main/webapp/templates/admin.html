@@ -35,7 +35,7 @@
                             </thead>
                             <tbody>
                             <tr ng-repeat="item in items | filter:searchText | orderBy:'label'">
-                                <td>{{item.label}}</td>
+                                <td><i class="fa fa-fw {{item.icons}}"></i> {{item.label}}</td>
                                 <td>{{item.request}}</td>
                                 <td>{{item.comment}}</td>
                                 <td>

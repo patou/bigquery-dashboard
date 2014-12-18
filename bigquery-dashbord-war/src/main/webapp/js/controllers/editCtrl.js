@@ -17,18 +17,20 @@ app.controller('EditCtrl', function ($http, $scope, $location, $interval, $route
                 $scope.labelText = data.label;
                 $scope.commentText = data.comment;
                 $scope.requestText = data.request;
+                $scope.icons = data.icons;
                 $scope.id = data.id;
             });
     }
 
     $scope.addNewItem = function () {
-        var item = {label: $scope.labelText, request: $scope.requestText, comment: $scope.commentText, id: $scope.id};
+        var item = {label: $scope.labelText, request: $scope.requestText, comment: $scope.commentText, id: $scope.id, icons: $scope.icons};
         $http.put("/api/service/query", item)
             .success(function (data) {
                 $scope.items = eval(data);
                 $scope.labelText = "";
                 $scope.commentText = "";
                 $scope.requestText = "";
+                $scope.icons = "";
                 $scope.formDisabled = false;
                 window.location.href = '/#/admin';
             })
@@ -42,13 +44,14 @@ app.controller('EditCtrl', function ($http, $scope, $location, $interval, $route
         $scope.labelText = "";
         $scope.commentText = "";
         $scope.requestText = "";
+        $scope.icons = "";
         $scope.formDisabled = false;
         window.location.href = '/#/admin';
     };
 
     $scope.test = function () {
         $scope.isRunning = true;
-        var item = {label: $scope.labelText, request: $scope.requestText, comment: $scope.commentText, id: $scope.id};
+        var item = {label: $scope.labelText, request: $scope.requestText, comment: $scope.commentText, id: $scope.id, icons: $scope.icons};
         $http.post("/api/execute/query/", item.request)
             .success(function () {
                 $scope.status.message = "Requête valide";

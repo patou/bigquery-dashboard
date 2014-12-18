@@ -24,7 +24,7 @@
                 <div class="list-group">
                     <a ng-repeat="item in items | filter:searchText | orderBy:'label'" href="javascript: ;" class="list-group-item"
                        ng-click="launchRequest($index)">
-                        <h4 class="list-group-item-heading">{{item.label}}</h4>
+                        <h4 class="list-group-item-heading"><i class="fa fa-fw {{item.icons}}"></i> {{item.label}}</h4>
                         <p class="list-group-item-text">{{item.comment}}</p>
                     </a>
                 </div>

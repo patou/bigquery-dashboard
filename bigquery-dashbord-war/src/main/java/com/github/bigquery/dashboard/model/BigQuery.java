@@ -28,6 +28,8 @@ public class BigQuery {
 
     @Expose
     private String request;
+    @Expose
+    private String icons;
 
     public Long getId() {
         return id;
@@ -59,5 +61,13 @@ public class BigQuery {
 
     public String getComment() {
         return comment;
+    }
+
+    public String getIcons() {
+        return icons;
+    }
+
+    public void setIcons(String icons) {
+        this.icons = icons;
     }
 }
