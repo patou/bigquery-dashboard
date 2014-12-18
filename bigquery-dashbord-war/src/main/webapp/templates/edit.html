@@ -296,7 +296,7 @@
                             </optgroup>
                         </select>
 
-                        <p class="help-block">Request icon</p>
+                        <p class="clearfix help-block">Request icon</p>
                     </div>
                 </div>
 
@@ -322,6 +322,45 @@
                             <p class="help-block">Put a valid bigquery request <a href="https://cloud.google.com/bigquery/query-reference">look on the query reference</a></p>
                         </div>
                     </div>
+
+                <div class="control-group">
+                    <button type="button" class="btn btn-default pull-right" aria-label="Add param">
+                        <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                    </button>
+                    <label class="control-label bott" for="requestText">Params</label>
+                    <div class="controls clearfix top10">
+                        <div class="row">
+                            <div class="col-xs-6 col-md-3">
+                                <div class="input-group  ">
+                                    <span class="input-group-addon">@</span>
+                                    <input type="text" class="form-control" value="name">
+                                </div>
+
+                            </div>
+                            <div class="col-xs-12 col-sm-9 col-md-9">
+                                <div class="input-group  col-xs-4">
+                                    <div class="input-group-btn">
+                                        <button type="button" class="btn btn-default dropdown-toggle"
+                                                data-toggle="dropdown" aria-expanded="false">Type <span
+                                                class="caret"></span></button>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li><a><i class="fa fa-font"></i> Text</a></li>
+                                            <li><a><i class="fa fa-list"></i> List</a></li>
+                                            <li><a><i class="fa fa-calendar"></i> Date</a></li>
+                                            <li><a><i class="fa fa-calculator"></i> Number</a></li>
+                                        </ul>
+                                    </div>
+                                    <!-- /btn-group -->
+                                    <input type="text" class="form-control">
+                                </div>
+                                <!-- /input-group -->
+                            </div>
+                        </div>
+                        <p class="help-block">Put a valid bigquery request <a
+                                href="https://cloud.google.com/bigquery/query-reference">look on the query reference</a>
+                        </p>
+                    </div>
+                </div>
 
                     <div class="control-group">
                         <label class="control-label" for="btnValider"></label>
