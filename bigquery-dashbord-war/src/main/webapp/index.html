@@ -52,7 +52,7 @@
         <!-- Top Menu Items -->
         <ul class="nav navbar-right top-nav">
             <li class="dropdown" ng-show="isAuthenticated">
-                <a ng-href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{user.email}}
+                <a class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{user.email}}
                     <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li>
@@ -66,6 +66,7 @@
         </ul>
         <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav side-nav">
             <ul class="nav navbar-nav side-nav">
                 <li>
                     <a ng-href="#/" data-toggle="collapse" data-target="#dash" class="" aria-expanded="false"><i
