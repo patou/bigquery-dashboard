@@ -1,11 +1,11 @@
 package com.github.bigquery.dashboard.model;
 
 import com.google.gson.annotations.Expose;
-import com.googlecode.objectify.annotation.AlsoLoad;
-import com.googlecode.objectify.annotation.Cache;
-import com.googlecode.objectify.annotation.Entity;
-import com.googlecode.objectify.annotation.Id;
-import com.googlecode.objectify.annotation.Index;
+import com.googlecode.objectify.Ref;
+import com.googlecode.objectify.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 01/10/2014.
@@ -30,6 +30,13 @@ public class BigQuery {
     private String request;
     @Expose
     private String icons;
+
+    @Load(value = WithParams.class)
+    List<Ref<AbstractQueryParam>> refParams = new ArrayList<>();
+
+    @Expose
+    @Ignore
+    List<AbstractQueryParam> params = null;
 
     public Long getId() {
         return id;
@@ -70,4 +77,36 @@ public class BigQuery {
     public void setIcons(String icons) {
         this.icons = icons;
     }
+
+    public List<Ref<AbstractQueryParam>> getRefParams() {
+        return refParams;
+    }
+
+    public void setRefParams(List<Ref<AbstractQueryParam>> refParams) {
+        this.refParams = refParams;
+    }
+
+    public List<AbstractQueryParam> getParams() {
+        if (params == null && refParams.size() > 0) {
+            params = new ArrayList<>();
+            for (Ref<AbstractQueryParam> ref : refParams) {
+                if (ref.isLoaded()) {
+                    params.add(ref.get());
+                }
+            }
+        }
+        return params;
+    }
+
+    public void setParams(List<AbstractQueryParam> params) {
+        this.params = params;
+        if (params != null) {
+            refParams.clear();
+            for (AbstractQueryParam ref : params) {
+                refParams.add(Ref.create(ref));
+            }
+        }
+    }
+
+    public static class WithParams {}
 }

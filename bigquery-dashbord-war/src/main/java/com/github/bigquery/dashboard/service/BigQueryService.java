@@ -2,8 +2,11 @@ package com.github.bigquery.dashboard.service;
 
 import java.util.List;
 
+import com.github.bigquery.dashboard.model.AbstractQueryParam;
 import com.github.bigquery.dashboard.model.BigQuery;
 import com.googlecode.objectify.Key;
+import com.googlecode.objectify.Work;
+import com.googlecode.objectify.cmd.Saver;
 
 public final class BigQueryService {
     private BigQueryService() {}
@@ -27,11 +30,24 @@ public final class BigQueryService {
     }
 
     public static BigQuery get(Long itemid) {
-        return OfyService.ofy().load().key(Key.create(BigQuery.class, itemid)).now();
+        return OfyService.ofy().load().group(BigQuery.WithParams.class).key(Key.create(BigQuery.class, itemid)).now();
     }
     
-    public static BigQuery createOrUpdate(BigQuery item) {
-    	OfyService.ofy().save().entity(item).now();
-    	return item;
+    public static BigQuery createOrUpdate(final BigQuery item) {
+        return OfyService.ofy().transact(new Work<BigQuery>() {
+            @Override
+            public BigQuery run() {
+                Saver saver = OfyService.ofy().save();
+                Key<BigQuery> bigqueryKey = saver.entity(item).now();
+                List<AbstractQueryParam> params = item.getParams();
+                if (params != null && params.size() > 0) {
+                    for (AbstractQueryParam param : params) {
+                        param.setBigQuery(bigqueryKey);
+                    }
+                    saver.entities(params).now();
+                }
+                return item;
+            }
+        });
     }
 }
