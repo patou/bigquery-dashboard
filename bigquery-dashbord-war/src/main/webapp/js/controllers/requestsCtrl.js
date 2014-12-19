@@ -1,7 +1,5 @@
 app.controller('RequestsCtrl', function ($scope, $location, $http, $interval, AuthService) {
-    $scope.user = AuthService.getUser();
-    $scope.items = {};
-    $scope.resuls = {};
+    AuthService.refresh();
 
     $http.get("/api/service/queries")
         .success(function (data) {

@@ -1,5 +1,5 @@
 //TODO use param object instead of flat string.
-app.controller('EditCtrl', function ($http, $scope, $location, $interval, $routeParams, AuthService) {
+app.controller('EditRequestCtrl', function ($http, $scope, $location, $interval, $routeParams, AuthService) {
     AuthService.refresh();
     $scope.items = {};
     $scope.result = {};
@@ -55,7 +55,7 @@ app.controller('EditCtrl', function ($http, $scope, $location, $interval, $route
                 $scope.requestText = "";
                 $scope.icons = "";
                 $scope.formDisabled = false;
-                window.location.href = '/#/admin';
+                $location.path("/admin");
             })
             .error(function (error) {
                 console.log(error);
@@ -69,7 +69,7 @@ app.controller('EditCtrl', function ($http, $scope, $location, $interval, $route
         $scope.requestText = "";
         $scope.icons = "";
         $scope.formDisabled = false;
-        window.location.href = '/#/admin';
+        $location.path("/admin");
     };
 
     $scope.test = function () {

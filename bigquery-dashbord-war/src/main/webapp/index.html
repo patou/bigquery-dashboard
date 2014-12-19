@@ -27,91 +27,100 @@
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
 </head>
 
 <body>
 
-    <div id="wrapper">
+<div id="wrapper">
 
-        <!-- Navigation -->
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" ng-controller="HeaderCtrl">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html">BigQuery DashBoard</a>
-            </div>
-            <!-- Top Menu Items -->
-            <ul class="nav navbar-right top-nav" >
-                <li class="dropdown" ng-show="isAuthenticated">
-                    <a ng-href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{user.email}} <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a ng-href="{{logoutPath()}}"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" ng-controller="HeaderCtrl">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">BigQuery DashBoard</a>
+        </div>
+        <!-- Top Menu Items -->
+        <ul class="nav navbar-right top-nav">
+            <li class="dropdown" ng-show="isAuthenticated">
+                <a ng-href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{user.email}}
+                    <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a ng-href="{{logoutPath()}}"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="dropdown" ng-hide="isAuthenticated">
+                <a ng-href="{{loginPath()}}">Connexion</a>
+            </li>
+        </ul>
+        <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav side-nav">
+                <li>
+                    <a ng-href="#/" data-toggle="collapse" data-target="#dash" class="" aria-expanded="false"><i
+                            class="fa fa-fw fa-dashboard"></i> Dashboards <i class="fa fa-fw fa-caret-down"></i></a>
+                    <ul id="dash" class="collapse in" aria-expanded="false">
+                        <li ng-repeat="dashboard in dashboards">
+                            <a ng-class="{active: isActive('/dashboard')}" ng-href="#/dashboard/{{dashboard.id}}">{{dashboard.label}}</a>
                         </li>
                     </ul>
                 </li>
-                <li class="dropdown" ng-hide="isAuthenticated">
-                    <a ng-href="{{loginPath()}}">Connexion</a>
+                <li>
+                    <a ng-href="#/requests"><i class="fa fa-fw fa-bar-chart-o"></i> Requests</a>
                 </li>
+                <li ng-class="{active: isActive('/admin')}">
+                    <a ng-show="isAdmin" ng-href="#/admin"><i class="fa fa-fw fa-edit"></i> Administration</a>
+                </li>
+
             </ul>
-            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav side-nav">
-                    <li ng-class="{active: isActive('/')}">
-                        <a ng-href="#/"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
-                    </li>
-                    <li>
-                        <a ng-href="#/requests"><i class="fa fa-fw fa-bar-chart-o"></i> Requests</a>
-                    </li>
-                    <li ng-class="{active: isActive('/admin')}">
-                        <a ng-show="isAdmin" ng-href="#/admin"><i class="fa fa-fw fa-edit"></i> Administration</a>
-                    </li>
-
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </nav>
-
-        <div id="page-wrapper">
-
-            <div ng-view></div>
-
         </div>
-        <!-- /#page-wrapper -->
+        <!-- /.navbar-collapse -->
+    </nav>
+
+    <div id="page-wrapper">
+
+        <div ng-view></div>
 
     </div>
-    <!-- /#wrapper -->
+    <!-- /#page-wrapper -->
 
-    <!-- jQuery -->
-    <script src="js/lib/jquery.js"></script>
-    <script src="js/lib/bootstrap.min.js"></script>
-    <script src="js/lib/angular.js"></script>
-    <script src="js/lib/angular-route.js"></script>
-    <script src="js/lib/ngProgress.min.js"></script>
-    <script src="js/lib/plugins/codemirror/ui-codemirror.js"></script>
-    <script src="js/lib/plugins/codemirror/codemirror.js"></script>
-    <script src="js/lib/plugins/codemirror/sql.js"></script>
-    <script src="js/lib/plugins/codemirror/show-hint.js"></script>
-    <script src="js/lib/plugins/codemirror/sql-hint.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/model/param.js"></script>
-    <script src="js/services/authSrvc.js"></script>
-    <script src="js/routes/route.js"></script>
-    <script src="js/controllers/dashboardCtrl.js"></script>
-    <script src="js/controllers/adminCtrl.js"></script>
-    <script src="js/controllers/editCtrl.js"></script>
-    <script src="js/controllers/headerCtrl.js"></script>
-    <script src="js/controllers/requestsCtrl.js"></script>
-    <script src="js/controllers/resultCtrl.js"></script>
+</div>
+<!-- /#wrapper -->
+
+<!-- jQuery -->
+<script src="js/lib/jquery.js"></script>
+<script src="js/lib/bootstrap.min.js"></script>
+<script src="js/lib/angular.js"></script>
+<script src="js/lib/angular-route.js"></script>
+<script src="js/lib/ngProgress.min.js"></script>
+<script src="js/lib/plugins/codemirror/ui-codemirror.js"></script>
+<script src="js/lib/plugins/codemirror/codemirror.js"></script>
+<script src="js/lib/plugins/codemirror/sql.js"></script>
+<script src="js/lib/plugins/codemirror/show-hint.js"></script>
+<script src="js/lib/plugins/codemirror/sql-hint.js"></script>
+<script src="js/main.js"></script>
+<script src="js/model/param.js"></script>
+<script src="js/services/authSrvc.js"></script>
+<script src="js/routes/route.js"></script>
+<script src="js/controllers/homeCtrl.js"></script>
+<script src="js/controllers/dashboardCtrl.js"></script>
+<script src="js/controllers/addDashboard.js"></script>
+<script src="js/controllers/adminCtrl.js"></script>
+<script src="js/controllers/editRequestCtrl.js"></script>
+<script src="js/controllers/headerCtrl.js"></script>
+<script src="js/controllers/requestsCtrl.js"></script>
+<script src="js/controllers/resultCtrl.js"></script>
 
 </body>
 

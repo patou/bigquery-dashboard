@@ -1,5 +1,4 @@
 app.controller('AdminCtrl', function($scope, $http) {
-    $scope.items = {};
     $scope.formDisabled = true;
 
     $http.get("/api/service/queries/all")

@@ -1,0 +1,61 @@
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+                BigQuery Dashboard
+                <small>Add dasboard</small>
+            </h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+
+            <form class="form-horizontal" ng-disabled="formDisabled">
+
+                <div class="control-group">
+                    <label class="control-label" for="labelText">Label</label>
+
+                    <div class="controls">
+                        <input ng-model="labelText" id="labelText" name="labelText" type="text"
+                               placeholder="Label" class="input-xlarge form-control"
+                               required="">
+
+                        <p class="help-block">Dasboard's title</p>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="commentText">Comment</label>
+
+                    <div class="controls">
+                        <input ng-model="commentText" id="commentText" name="commentText" type="text"
+                               placeholder="Description" class="input-xlarge form-control"
+                               required="">
+
+                        <p class="help-block">Dashboard's meaning</p>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label"></label>
+
+                    <div class="controls">
+                        <button id="btnValider" name="btnValider" class="btn btn-primary" ng-click="addNewItem()">
+                            Save
+                        </button>
+                        <button id="btnAnnuler" name="btnAnnuler" class="btn btn-danger" ng-click="cancel()">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+
+                </fieldset>
+            </form>
+
+        </div>
+    </div>
+    <br/>
+
+
+</div>
