@@ -14,7 +14,6 @@ app.controller('EditCtrl', function ($http, $scope, $location, $interval, $route
         lineNumbers: true,
         indentWithTabs: true,
         smartIndent: true,
-        lineNumbers: true,
         matchBrackets : true,
         autofocus: true,
         extraKeys: {"Ctrl-Space": "autocomplete"},
@@ -87,6 +86,14 @@ app.controller('EditCtrl', function ($http, $scope, $location, $interval, $route
                 $scope.isRunning = false;
             });
 
+    };
+
+    $scope.removeParam = function(index) {
+        if (index > -1) {
+            var defaultParam = ""; //TODO retrieve the default value of the current param to be replaced.
+            $scope.params.splice(index+1, 1);
+            $scope.requestText = $scope.requestText.replace("@"+$scope.params[index], defaultParam);
+        }
     };
 
     var removeAt = function(value) {
