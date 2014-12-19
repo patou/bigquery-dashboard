@@ -1,3 +1,4 @@
+//TODO use param object instead of flat string.
 app.controller('EditCtrl', function ($http, $scope, $location, $interval, $routeParams, AuthService) {
     AuthService.refresh();
     $scope.items = {};
@@ -94,6 +95,12 @@ app.controller('EditCtrl', function ($http, $scope, $location, $interval, $route
             $scope.params.splice(index+1, 1);
             $scope.requestText = $scope.requestText.replace("@"+$scope.params[index], defaultParam);
         }
+    };
+
+    $scope.addParam = function() {
+        var item = Math.random().toString(36).substring(7);
+        $scope.params.push(item); //TODO assign a logical text here.
+        $scope.requestText = $scope.requestText + " @"+item;
     };
 
     var removeAt = function(value) {
