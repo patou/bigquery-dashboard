@@ -1,402 +1,404 @@
 <div class="container-fluid">
-    <!-- Page Heading -->
-    <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header">
-                BigQuery Dashboard
-                <small>Add request</small>
-            </h1>
-        </div>
+<!-- Page Heading -->
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">
+            BigQuery Dashboard
+            <small>Add request</small>
+        </h1>
     </div>
-    <div class="row">
-        <div class="col-lg-12">
+</div>
+<div class="row">
+<div class="col-lg-12">
 
-            <form class="form-horizontal" ng-disabled="formDisabled">
+<form class="form-horizontal" ng-disabled="formDisabled">
 
-                    <div class="control-group">
-                        <label class="control-label" for="labelText">Label</label>
+<div class="control-group">
+    <label class="control-label" for="labelText">Label</label>
 
-                        <div class="controls">
-                            <input ng-model="labelText" id="labelText" name="labelText" type="text"
-                                   placeholder="Label" class="input-xlarge form-control"
-                                   required="">
+    <div class="controls">
+        <input ng-model="labelText" id="labelText" name="labelText" type="text"
+               placeholder="Label" class="input-xlarge form-control"
+               required="">
 
-                            <p class="help-block">Request's title</p>
-                        </div>
-                    </div>
+        <p class="help-block">Request's title</p>
+    </div>
+</div>
 
-                <div class="control-group">
-                    <label class="control-label" for="labelText">Icon</label>
+<div class="control-group">
+<label class="control-label" for="labelText">Icon</label>
 
-                    <div class="controls">
-                        <select ng-model="icons" class="form-control">
-                            <option value="">-</option>
-                            <optgroup label="Web Application Icons">
-                                <option value="fa-adjust">fa-adjust</option>
-                                <option value="fa-asterisk">fa-asterisk</option>
-                                <option value="fa-ban-circle">fa-ban-circle</option>
-                                <option value="fa-bar-chart">fa-bar-chart</option>
-                                <option value="fa-barcode">fa-barcode</option>
-                                <option value="fa-beaker">fa-beaker</option>
-                                <option value="fa-beer">fa-beer</option>
-                                <option value="fa-bell">fa-bell</option>
-                                <option value="fa-bell-alt">fa-bell-alt</option>
-                                <option value="fa-bolt">fa-bolt</option>
-                                <option value="fa-book">fa-book</option>
-                                <option value="fa-bookmark">fa-bookmark</option>
-                                <option value="fa-bookmark-empty">fa-bookmark-empty</option>
-                                <option value="fa-briefcase">fa-briefcase</option>
-                                <option value="fa-bullhorn">fa-bullhorn</option>
-                                <option value="fa-calendar">fa-calendar</option>
-                                <option value="fa-camera">fa-camera</option>
-                                <option value="fa-camera-retro">fa-camera-retro</option>
-                                <option value="fa-certificate">fa-certificate</option>
-                                <option value="fa-check">fa-check</option>
-                                <option value="fa-check-empty">fa-check-empty</option>
-                                <option value="fa-circle">fa-circle</option>
-                                <option value="fa-circle-blank">fa-circle-blank</option>
-                                <option value="fa-cloud">fa-cloud</option>
-                                <option value="fa-cloud-download">fa-cloud-download</option>
-                                <option value="fa-cloud-upload">fa-cloud-upload</option>
-                                <option value="fa-coffee">fa-coffee</option>
-                                <option value="fa-cog">fa-cog</option>
-                                <option value="fa-cogs">fa-cogs</option>
-                                <option value="fa-comment">fa-comment</option>
-                                <option value="fa-comment-alt">fa-comment-alt</option>
-                                <option value="fa-comments">fa-comments</option>
-                                <option value="fa-comments-alt">fa-comments-alt</option>
-                                <option value="fa-credit-card">fa-credit-card</option>
-                                <option value="fa-dashboard">fa-dashboard</option>
-                                <option value="fa-desktop">fa-desktop</option>
-                                <option value="fa-download">fa-download</option>
-                                <option value="fa-download-alt">fa-download-alt</option>
-                                <option value="fa-edit">fa-edit</option>
-                                <option value="fa-envelope">fa-envelope</option>
-                                <option value="fa-envelope-alt">fa-envelope-alt</option>
-                                <option value="fa-exchange">fa-exchange</option>
-                                <option value="fa-exclamation-sign">fa-exclamation-sign</option>
-                                <option value="fa-external-link">fa-external-link</option>
-                                <option value="fa-eye-close">fa-eye-close</option>
-                                <option value="fa-eye-open">fa-eye-open</option>
-                                <option value="fa-facetime-video">fa-facetime-video</option>
-                                <option value="fa-fighter-jet">fa-fighter-jet</option>
-                                <option value="fa-film">fa-film</option>
-                                <option value="fa-filter">fa-filter</option>
-                                <option value="fa-fire">fa-fire</option>
-                                <option value="fa-flag">fa-flag</option>
-                                <option value="fa-folder-close">fa-folder-close</option>
-                                <option value="fa-folder-open">fa-folder-open</option>
-                                <option value="fa-folder-close-alt">fa-folder-close-alt</option>
-                                <option value="fa-folder-open-alt">fa-folder-open-alt</option>
-                                <option value="fa-food">fa-food</option>
-                                <option value="fa-gift">fa-gift</option>
-                                <option value="fa-glass">fa-glass</option>
-                                <option value="fa-globe">fa-globe</option>
-                                <option value="fa-group">fa-group</option>
-                                <option value="fa-hdd">fa-hdd</option>
-                                <option value="fa-headphones">fa-headphones</option>
-                                <option value="fa-heart">fa-heart</option>
-                                <option value="fa-heart-empty">fa-heart-empty</option>
-                                <option value="fa-home">fa-home</option>
-                                <option value="fa-inbox">fa-inbox</option>
-                                <option value="fa-info-sign">fa-info-sign</option>
-                                <option value="fa-key">fa-key</option>
-                                <option value="fa-leaf">fa-leaf</option>
-                                <option value="fa-laptop">fa-laptop</option>
-                                <option value="fa-legal">fa-legal</option>
-                                <option value="fa-lemon">fa-lemon</option>
-                                <option value="fa-lightbulb">fa-lightbulb</option>
-                                <option value="fa-lock">fa-lock</option>
-                                <option value="fa-unlock">fa-unlock</option>
-                                <option value="fa-magic">fa-magic</option>
-                                <option value="fa-magnet">fa-magnet</option>
-                                <option value="fa-map-marker">fa-map-marker</option>
-                                <option value="fa-minus">fa-minus</option>
-                                <option value="fa-minus-sign">fa-minus-sign</option>
-                                <option value="fa-mobile-phone">fa-mobile-phone</option>
-                                <option value="fa-money">fa-money</option>
-                                <option value="fa-move">fa-move</option>
-                                <option value="fa-music">fa-music</option>
-                                <option value="fa-off">fa-off</option>
-                                <option value="fa-ok">fa-ok</option>
-                                <option value="fa-ok-circle">fa-ok-circle</option>
-                                <option value="fa-ok-sign">fa-ok-sign</option>
-                                <option value="fa-pencil">fa-pencil</option>
-                                <option value="fa-picture">fa-picture</option>
-                                <option value="fa-plane">fa-plane</option>
-                                <option value="fa-plus">fa-plus</option>
-                                <option value="fa-plus-sign">fa-plus-sign</option>
-                                <option value="fa-print">fa-print</option>
-                                <option value="fa-pushpin">fa-pushpin</option>
-                                <option value="fa-qrcode">fa-qrcode</option>
-                                <option value="fa-question-sign">fa-question-sign</option>
-                                <option value="fa-quote-left">fa-quote-left</option>
-                                <option value="fa-quote-right">fa-quote-right</option>
-                                <option value="fa-random">fa-random</option>
-                                <option value="fa-refresh">fa-refresh</option>
-                                <option value="fa-remove">fa-remove</option>
-                                <option value="fa-remove-circle">fa-remove-circle</option>
-                                <option value="fa-remove-sign">fa-remove-sign</option>
-                                <option value="fa-reorder">fa-reorder</option>
-                                <option value="fa-reply">fa-reply</option>
-                                <option value="fa-resize-horizontal">fa-resize-horizontal</option>
-                                <option value="fa-resize-vertical">fa-resize-vertical</option>
-                                <option value="fa-retweet">fa-retweet</option>
-                                <option value="fa-road">fa-road</option>
-                                <option value="fa-rss">fa-rss</option>
-                                <option value="fa-screenshot">fa-screenshot</option>
-                                <option value="fa-search">fa-search</option>
-                                <option value="fa-share">fa-share</option>
-                                <option value="fa-share-alt">fa-share-alt</option>
-                                <option value="fa-shopping-cart">fa-shopping-cart</option>
-                                <option value="fa-signal">fa-signal</option>
-                                <option value="fa-signin">fa-signin</option>
-                                <option value="fa-signout">fa-signout</option>
-                                <option value="fa-sitemap">fa-sitemap</option>
-                                <option value="fa-sort">fa-sort</option>
-                                <option value="fa-sort-down">fa-sort-down</option>
-                                <option value="fa-sort-up">fa-sort-up</option>
-                                <option value="fa-spinner">fa-spinner</option>
-                                <option value="fa-star">fa-star</option>
-                                <option value="fa-star-empty">fa-star-empty</option>
-                                <option value="fa-star-half">fa-star-half</option>
-                                <option value="fa-tablet">fa-tablet</option>
-                                <option value="fa-tag">fa-tag</option>
-                                <option value="fa-tags">fa-tags</option>
-                                <option value="fa-tasks">fa-tasks</option>
-                                <option value="fa-thumbs-down">fa-thumbs-down</option>
-                                <option value="fa-thumbs-up">fa-thumbs-up</option>
-                                <option value="fa-time">fa-time</option>
-                                <option value="fa-tint">fa-tint</option>
-                                <option value="fa-trash">fa-trash</option>
-                                <option value="fa-trophy">fa-trophy</option>
-                                <option value="fa-truck">fa-truck</option>
-                                <option value="fa-umbrella">fa-umbrella</option>
-                                <option value="fa-upload">fa-upload</option>
-                                <option value="fa-upload-alt">fa-upload-alt</option>
-                                <option value="fa-user">fa-user</option>
-                                <option value="fa-user-md">fa-user-md</option>
-                                <option value="fa-volume-off">fa-volume-off</option>
-                                <option value="fa-volume-down">fa-volume-down</option>
-                                <option value="fa-volume-up">fa-volume-up</option>
-                                <option value="fa-warning-sign">fa-warning-sign</option>
-                                <option value="fa-wrench">fa-wrench</option>
-                                <option value="fa-zoom-in">fa-zoom-in</option>
-                                <option value="fa-zoom-out">fa-zoom-out</option>
-                            </optgroup>
-                            <optgroup label="Text Editor Icons">
-                                <option value="fa-file">fa-file</option>
-                                <option value="fa-file-alt">fa-file-alt</option>
-                                <option value="fa-cut">fa-cut</option>
-                                <option value="fa-copy">fa-copy</option>
-                                <option value="fa-paste">fa-paste</option>
-                                <option value="fa-save">fa-save</option>
-                                <option value="fa-undo">fa-undo</option>
-                                <option value="fa-repeat">fa-repeat</option>
-                                <option value="fa-text-height">fa-text-height</option>
-                                <option value="fa-text-width">fa-text-width</option>
-                                <option value="fa-align-left">fa-align-left</option>
-                                <option value="fa-align-center">fa-align-center</option>
-                                <option value="fa-align-right">fa-align-right</option>
-                                <option value="fa-align-justify">fa-align-justify</option>
-                                <option value="fa-indent-left">fa-indent-left</option>
-                                <option value="fa-indent-right">fa-indent-right</option>
-                                <option value="fa-font">fa-font</option>
-                                <option value="fa-bold">fa-bold</option>
-                                <option value="fa-italic">fa-italic</option>
-                                <option value="fa-strikethrough">fa-strikethrough</option>
-                                <option value="fa-underline">fa-underline</option>
-                                <option value="fa-link">fa-link</option>
-                                <option value="fa-paper-clip">fa-paper-clip</option>
-                                <option value="fa-columns">fa-columns</option>
-                                <option value="fa-table">fa-table</option>
-                                <option value="fa-th-large">fa-th-large</option>
-                                <option value="fa-th">fa-th</option>
-                                <option value="fa-th-list">fa-th-list</option>
-                                <option value="fa-list">fa-list</option>
-                                <option value="fa-list-ol">fa-list-ol</option>
-                                <option value="fa-list-ul">fa-list-ul</option>
-                                <option value="fa-list-alt">fa-list-alt</option>
-                            </optgroup>
-                            <optgroup label="Directional Icons">
-                                <option value="fa-angle-left">fa-angle-left</option>
-                                <option value="fa-angle-right">fa-angle-right</option>
-                                <option value="fa-angle-up">fa-angle-up</option>
-                                <option value="fa-angle-down">fa-angle-down</option>
-                                <option value="fa-arrow-down">fa-arrow-down</option>
-                                <option value="fa-arrow-left">fa-arrow-left</option>
-                                <option value="fa-arrow-right">fa-arrow-right</option>
-                                <option value="fa-arrow-up">fa-arrow-up</option>
-                                <option value="fa-caret-down">fa-caret-down</option>
-                                <option value="fa-caret-left">fa-caret-left</option>
-                                <option value="fa-caret-right">fa-caret-right</option>
-                                <option value="fa-caret-up">fa-caret-up</option>
-                                <option value="fa-chevron-down">fa-chevron-down</option>
-                                <option value="fa-chevron-left">fa-chevron-left</option>
-                                <option value="fa-chevron-right">fa-chevron-right</option>
-                                <option value="fa-chevron-up">fa-chevron-up</option>
-                                <option value="fa-circle-arrow-down">fa-circle-arrow-down</option>
-                                <option value="fa-circle-arrow-left">fa-circle-arrow-left</option>
-                                <option value="fa-circle-arrow-right">fa-circle-arrow-right</option>
-                                <option value="fa-circle-arrow-up">fa-circle-arrow-up</option>
-                                <option value="fa-double-angle-left">fa-double-angle-left</option>
-                                <option value="fa-double-angle-right">fa-double-angle-right</option>
-                                <option value="fa-double-angle-up">fa-double-angle-up</option>
-                                <option value="fa-double-angle-down">fa-double-angle-down</option>
-                                <option value="fa-hand-down">fa-hand-down</option>
-                                <option value="fa-hand-left">fa-hand-left</option>
-                                <option value="fa-hand-right">fa-hand-right</option>
-                                <option value="fa-hand-up">fa-hand-up</option>
-                                <option value="fa-circle">fa-circle</option>
-                                <option value="fa-circle-blank">fa-circle-blank</option>
-                            </optgroup>
-                            <optgroup label="Video Player Icons">
-                                <option value="fa-play-circle">fa-play-circle</option>
-                                <option value="fa-play">fa-play</option>
-                                <option value="fa-pause">fa-pause</option>
-                                <option value="fa-stop">fa-stop</option>
-                                <option value="fa-step-backward">fa-step-backward</option>
-                                <option value="fa-fast-backward">fa-fast-backward</option>
-                                <option value="fa-backward">fa-backward</option>
-                                <option value="fa-forward">fa-forward</option>
-                                <option value="fa-fast-forward">fa-fast-forward</option>
-                                <option value="fa-step-forward">fa-step-forward</option>
-                                <option value="fa-eject">fa-eject</option>
-                                <option value="fa-fullscreen">fa-fullscreen</option>
-                                <option value="fa-resize-full">fa-resize-full</option>
-                                <option value="fa-resize-small">fa-resize-small</option>
-                            </optgroup>
-                            <optgroup label="Social Icons">
-                                <option value="fa-phone">fa-phone</option>
-                                <option value="fa-phone-sign">fa-phone-sign</option>
-                                <option value="fa-facebook">fa-facebook</option>
-                                <option value="fa-facebook-sign">fa-facebook-sign</option>
-                                <option value="fa-twitter">fa-twitter</option>
-                                <option value="fa-twitter-sign">fa-twitter-sign</option>
-                                <option value="fa-github">fa-github</option>
-                                <option value="fa-github-alt">fa-github-alt</option>
-                                <option value="fa-github-sign">fa-github-sign</option>
-                                <option value="fa-linkedin">fa-linkedin</option>
-                                <option value="fa-linkedin-sign">fa-linkedin-sign</option>
-                                <option value="fa-pinterest">fa-pinterest</option>
-                                <option value="fa-pinterest-sign">fa-pinterest-sign</option>
-                                <option value="fa-google-plus">fa-google-plus</option>
-                                <option value="fa-google-plus-sign">fa-google-plus-sign</option>
-                                <option value="fa-sign-blank">fa-sign-blank</option>
-                            </optgroup>
-                            <optgroup label="Medical Icons">
-                                <option value="fa-ambulance">fa-ambulance</option>
-                                <option value="fa-beaker">fa-beaker</option>
-                                <option value="fa-h-sign">fa-h-sign</option>
-                                <option value="fa-hospital">fa-hospital</option>
-                                <option value="fa-medkit">fa-medkit</option>
-                                <option value="fa-plus-sign-alt">fa-plus-sign-alt</option>
-                                <option value="fa-stethoscope">fa-stethoscope</option>
-                                <option value="fa-user-md">fa-user-md</option>
-                            </optgroup>
-                        </select>
+<div class="controls">
+<select ng-model="icons" class="form-control">
+<option value="">-</option>
+<optgroup label="Web Application Icons">
+    <option value="fa-adjust">fa-adjust</option>
+    <option value="fa-asterisk">fa-asterisk</option>
+    <option value="fa-ban-circle">fa-ban-circle</option>
+    <option value="fa-bar-chart">fa-bar-chart</option>
+    <option value="fa-barcode">fa-barcode</option>
+    <option value="fa-beaker">fa-beaker</option>
+    <option value="fa-beer">fa-beer</option>
+    <option value="fa-bell">fa-bell</option>
+    <option value="fa-bell-alt">fa-bell-alt</option>
+    <option value="fa-bolt">fa-bolt</option>
+    <option value="fa-book">fa-book</option>
+    <option value="fa-bookmark">fa-bookmark</option>
+    <option value="fa-bookmark-empty">fa-bookmark-empty</option>
+    <option value="fa-briefcase">fa-briefcase</option>
+    <option value="fa-bullhorn">fa-bullhorn</option>
+    <option value="fa-calendar">fa-calendar</option>
+    <option value="fa-camera">fa-camera</option>
+    <option value="fa-camera-retro">fa-camera-retro</option>
+    <option value="fa-certificate">fa-certificate</option>
+    <option value="fa-check">fa-check</option>
+    <option value="fa-check-empty">fa-check-empty</option>
+    <option value="fa-circle">fa-circle</option>
+    <option value="fa-circle-blank">fa-circle-blank</option>
+    <option value="fa-cloud">fa-cloud</option>
+    <option value="fa-cloud-download">fa-cloud-download</option>
+    <option value="fa-cloud-upload">fa-cloud-upload</option>
+    <option value="fa-coffee">fa-coffee</option>
+    <option value="fa-cog">fa-cog</option>
+    <option value="fa-cogs">fa-cogs</option>
+    <option value="fa-comment">fa-comment</option>
+    <option value="fa-comment-alt">fa-comment-alt</option>
+    <option value="fa-comments">fa-comments</option>
+    <option value="fa-comments-alt">fa-comments-alt</option>
+    <option value="fa-credit-card">fa-credit-card</option>
+    <option value="fa-dashboard">fa-dashboard</option>
+    <option value="fa-desktop">fa-desktop</option>
+    <option value="fa-download">fa-download</option>
+    <option value="fa-download-alt">fa-download-alt</option>
+    <option value="fa-edit">fa-edit</option>
+    <option value="fa-envelope">fa-envelope</option>
+    <option value="fa-envelope-alt">fa-envelope-alt</option>
+    <option value="fa-exchange">fa-exchange</option>
+    <option value="fa-exclamation-sign">fa-exclamation-sign</option>
+    <option value="fa-external-link">fa-external-link</option>
+    <option value="fa-eye-close">fa-eye-close</option>
+    <option value="fa-eye-open">fa-eye-open</option>
+    <option value="fa-facetime-video">fa-facetime-video</option>
+    <option value="fa-fighter-jet">fa-fighter-jet</option>
+    <option value="fa-film">fa-film</option>
+    <option value="fa-filter">fa-filter</option>
+    <option value="fa-fire">fa-fire</option>
+    <option value="fa-flag">fa-flag</option>
+    <option value="fa-folder-close">fa-folder-close</option>
+    <option value="fa-folder-open">fa-folder-open</option>
+    <option value="fa-folder-close-alt">fa-folder-close-alt</option>
+    <option value="fa-folder-open-alt">fa-folder-open-alt</option>
+    <option value="fa-food">fa-food</option>
+    <option value="fa-gift">fa-gift</option>
+    <option value="fa-glass">fa-glass</option>
+    <option value="fa-globe">fa-globe</option>
+    <option value="fa-group">fa-group</option>
+    <option value="fa-hdd">fa-hdd</option>
+    <option value="fa-headphones">fa-headphones</option>
+    <option value="fa-heart">fa-heart</option>
+    <option value="fa-heart-empty">fa-heart-empty</option>
+    <option value="fa-home">fa-home</option>
+    <option value="fa-inbox">fa-inbox</option>
+    <option value="fa-info-sign">fa-info-sign</option>
+    <option value="fa-key">fa-key</option>
+    <option value="fa-leaf">fa-leaf</option>
+    <option value="fa-laptop">fa-laptop</option>
+    <option value="fa-legal">fa-legal</option>
+    <option value="fa-lemon">fa-lemon</option>
+    <option value="fa-lightbulb">fa-lightbulb</option>
+    <option value="fa-lock">fa-lock</option>
+    <option value="fa-unlock">fa-unlock</option>
+    <option value="fa-magic">fa-magic</option>
+    <option value="fa-magnet">fa-magnet</option>
+    <option value="fa-map-marker">fa-map-marker</option>
+    <option value="fa-minus">fa-minus</option>
+    <option value="fa-minus-sign">fa-minus-sign</option>
+    <option value="fa-mobile-phone">fa-mobile-phone</option>
+    <option value="fa-money">fa-money</option>
+    <option value="fa-move">fa-move</option>
+    <option value="fa-music">fa-music</option>
+    <option value="fa-off">fa-off</option>
+    <option value="fa-ok">fa-ok</option>
+    <option value="fa-ok-circle">fa-ok-circle</option>
+    <option value="fa-ok-sign">fa-ok-sign</option>
+    <option value="fa-pencil">fa-pencil</option>
+    <option value="fa-picture">fa-picture</option>
+    <option value="fa-plane">fa-plane</option>
+    <option value="fa-plus">fa-plus</option>
+    <option value="fa-plus-sign">fa-plus-sign</option>
+    <option value="fa-print">fa-print</option>
+    <option value="fa-pushpin">fa-pushpin</option>
+    <option value="fa-qrcode">fa-qrcode</option>
+    <option value="fa-question-sign">fa-question-sign</option>
+    <option value="fa-quote-left">fa-quote-left</option>
+    <option value="fa-quote-right">fa-quote-right</option>
+    <option value="fa-random">fa-random</option>
+    <option value="fa-refresh">fa-refresh</option>
+    <option value="fa-remove">fa-remove</option>
+    <option value="fa-remove-circle">fa-remove-circle</option>
+    <option value="fa-remove-sign">fa-remove-sign</option>
+    <option value="fa-reorder">fa-reorder</option>
+    <option value="fa-reply">fa-reply</option>
+    <option value="fa-resize-horizontal">fa-resize-horizontal</option>
+    <option value="fa-resize-vertical">fa-resize-vertical</option>
+    <option value="fa-retweet">fa-retweet</option>
+    <option value="fa-road">fa-road</option>
+    <option value="fa-rss">fa-rss</option>
+    <option value="fa-screenshot">fa-screenshot</option>
+    <option value="fa-search">fa-search</option>
+    <option value="fa-share">fa-share</option>
+    <option value="fa-share-alt">fa-share-alt</option>
+    <option value="fa-shopping-cart">fa-shopping-cart</option>
+    <option value="fa-signal">fa-signal</option>
+    <option value="fa-signin">fa-signin</option>
+    <option value="fa-signout">fa-signout</option>
+    <option value="fa-sitemap">fa-sitemap</option>
+    <option value="fa-sort">fa-sort</option>
+    <option value="fa-sort-down">fa-sort-down</option>
+    <option value="fa-sort-up">fa-sort-up</option>
+    <option value="fa-spinner">fa-spinner</option>
+    <option value="fa-star">fa-star</option>
+    <option value="fa-star-empty">fa-star-empty</option>
+    <option value="fa-star-half">fa-star-half</option>
+    <option value="fa-tablet">fa-tablet</option>
+    <option value="fa-tag">fa-tag</option>
+    <option value="fa-tags">fa-tags</option>
+    <option value="fa-tasks">fa-tasks</option>
+    <option value="fa-thumbs-down">fa-thumbs-down</option>
+    <option value="fa-thumbs-up">fa-thumbs-up</option>
+    <option value="fa-time">fa-time</option>
+    <option value="fa-tint">fa-tint</option>
+    <option value="fa-trash">fa-trash</option>
+    <option value="fa-trophy">fa-trophy</option>
+    <option value="fa-truck">fa-truck</option>
+    <option value="fa-umbrella">fa-umbrella</option>
+    <option value="fa-upload">fa-upload</option>
+    <option value="fa-upload-alt">fa-upload-alt</option>
+    <option value="fa-user">fa-user</option>
+    <option value="fa-user-md">fa-user-md</option>
+    <option value="fa-volume-off">fa-volume-off</option>
+    <option value="fa-volume-down">fa-volume-down</option>
+    <option value="fa-volume-up">fa-volume-up</option>
+    <option value="fa-warning-sign">fa-warning-sign</option>
+    <option value="fa-wrench">fa-wrench</option>
+    <option value="fa-zoom-in">fa-zoom-in</option>
+    <option value="fa-zoom-out">fa-zoom-out</option>
+</optgroup>
+<optgroup label="Text Editor Icons">
+    <option value="fa-file">fa-file</option>
+    <option value="fa-file-alt">fa-file-alt</option>
+    <option value="fa-cut">fa-cut</option>
+    <option value="fa-copy">fa-copy</option>
+    <option value="fa-paste">fa-paste</option>
+    <option value="fa-save">fa-save</option>
+    <option value="fa-undo">fa-undo</option>
+    <option value="fa-repeat">fa-repeat</option>
+    <option value="fa-text-height">fa-text-height</option>
+    <option value="fa-text-width">fa-text-width</option>
+    <option value="fa-align-left">fa-align-left</option>
+    <option value="fa-align-center">fa-align-center</option>
+    <option value="fa-align-right">fa-align-right</option>
+    <option value="fa-align-justify">fa-align-justify</option>
+    <option value="fa-indent-left">fa-indent-left</option>
+    <option value="fa-indent-right">fa-indent-right</option>
+    <option value="fa-font">fa-font</option>
+    <option value="fa-bold">fa-bold</option>
+    <option value="fa-italic">fa-italic</option>
+    <option value="fa-strikethrough">fa-strikethrough</option>
+    <option value="fa-underline">fa-underline</option>
+    <option value="fa-link">fa-link</option>
+    <option value="fa-paper-clip">fa-paper-clip</option>
+    <option value="fa-columns">fa-columns</option>
+    <option value="fa-table">fa-table</option>
+    <option value="fa-th-large">fa-th-large</option>
+    <option value="fa-th">fa-th</option>
+    <option value="fa-th-list">fa-th-list</option>
+    <option value="fa-list">fa-list</option>
+    <option value="fa-list-ol">fa-list-ol</option>
+    <option value="fa-list-ul">fa-list-ul</option>
+    <option value="fa-list-alt">fa-list-alt</option>
+</optgroup>
+<optgroup label="Directional Icons">
+    <option value="fa-angle-left">fa-angle-left</option>
+    <option value="fa-angle-right">fa-angle-right</option>
+    <option value="fa-angle-up">fa-angle-up</option>
+    <option value="fa-angle-down">fa-angle-down</option>
+    <option value="fa-arrow-down">fa-arrow-down</option>
+    <option value="fa-arrow-left">fa-arrow-left</option>
+    <option value="fa-arrow-right">fa-arrow-right</option>
+    <option value="fa-arrow-up">fa-arrow-up</option>
+    <option value="fa-caret-down">fa-caret-down</option>
+    <option value="fa-caret-left">fa-caret-left</option>
+    <option value="fa-caret-right">fa-caret-right</option>
+    <option value="fa-caret-up">fa-caret-up</option>
+    <option value="fa-chevron-down">fa-chevron-down</option>
+    <option value="fa-chevron-left">fa-chevron-left</option>
+    <option value="fa-chevron-right">fa-chevron-right</option>
+    <option value="fa-chevron-up">fa-chevron-up</option>
+    <option value="fa-circle-arrow-down">fa-circle-arrow-down</option>
+    <option value="fa-circle-arrow-left">fa-circle-arrow-left</option>
+    <option value="fa-circle-arrow-right">fa-circle-arrow-right</option>
+    <option value="fa-circle-arrow-up">fa-circle-arrow-up</option>
+    <option value="fa-double-angle-left">fa-double-angle-left</option>
+    <option value="fa-double-angle-right">fa-double-angle-right</option>
+    <option value="fa-double-angle-up">fa-double-angle-up</option>
+    <option value="fa-double-angle-down">fa-double-angle-down</option>
+    <option value="fa-hand-down">fa-hand-down</option>
+    <option value="fa-hand-left">fa-hand-left</option>
+    <option value="fa-hand-right">fa-hand-right</option>
+    <option value="fa-hand-up">fa-hand-up</option>
+    <option value="fa-circle">fa-circle</option>
+    <option value="fa-circle-blank">fa-circle-blank</option>
+</optgroup>
+<optgroup label="Video Player Icons">
+    <option value="fa-play-circle">fa-play-circle</option>
+    <option value="fa-play">fa-play</option>
+    <option value="fa-pause">fa-pause</option>
+    <option value="fa-stop">fa-stop</option>
+    <option value="fa-step-backward">fa-step-backward</option>
+    <option value="fa-fast-backward">fa-fast-backward</option>
+    <option value="fa-backward">fa-backward</option>
+    <option value="fa-forward">fa-forward</option>
+    <option value="fa-fast-forward">fa-fast-forward</option>
+    <option value="fa-step-forward">fa-step-forward</option>
+    <option value="fa-eject">fa-eject</option>
+    <option value="fa-fullscreen">fa-fullscreen</option>
+    <option value="fa-resize-full">fa-resize-full</option>
+    <option value="fa-resize-small">fa-resize-small</option>
+</optgroup>
+<optgroup label="Social Icons">
+    <option value="fa-phone">fa-phone</option>
+    <option value="fa-phone-sign">fa-phone-sign</option>
+    <option value="fa-facebook">fa-facebook</option>
+    <option value="fa-facebook-sign">fa-facebook-sign</option>
+    <option value="fa-twitter">fa-twitter</option>
+    <option value="fa-twitter-sign">fa-twitter-sign</option>
+    <option value="fa-github">fa-github</option>
+    <option value="fa-github-alt">fa-github-alt</option>
+    <option value="fa-github-sign">fa-github-sign</option>
+    <option value="fa-linkedin">fa-linkedin</option>
+    <option value="fa-linkedin-sign">fa-linkedin-sign</option>
+    <option value="fa-pinterest">fa-pinterest</option>
+    <option value="fa-pinterest-sign">fa-pinterest-sign</option>
+    <option value="fa-google-plus">fa-google-plus</option>
+    <option value="fa-google-plus-sign">fa-google-plus-sign</option>
+    <option value="fa-sign-blank">fa-sign-blank</option>
+</optgroup>
+<optgroup label="Medical Icons">
+    <option value="fa-ambulance">fa-ambulance</option>
+    <option value="fa-beaker">fa-beaker</option>
+    <option value="fa-h-sign">fa-h-sign</option>
+    <option value="fa-hospital">fa-hospital</option>
+    <option value="fa-medkit">fa-medkit</option>
+    <option value="fa-plus-sign-alt">fa-plus-sign-alt</option>
+    <option value="fa-stethoscope">fa-stethoscope</option>
+    <option value="fa-user-md">fa-user-md</option>
+</optgroup>
+</select>
 
-                        <p class="clearfix help-block">Request icon</p>
-                    </div>
+<p class="clearfix help-block">Request icon</p>
+</div>
+</div>
+
+<div class="control-group">
+    <label class="control-label" for="commentText">Description</label>
+
+    <div class="controls">
+        <input ng-model="commentText" id="commentText" name="commentText" type="text"
+               placeholder="Description" class="input-xlarge form-control"
+               required="">
+
+        <p class="help-block">Request's meaning</p>
+    </div>
+</div>
+
+<div class="control-group">
+    <label class="control-label">Request</label>
+
+    <div class="controls">
+        <ui-codemirror ng-model="requestText" ui-codemirror-opts="editorOptions"></ui-codemirror>
+
+        <p class="help-block">Put a valid bigquery request <a href="https://cloud.google.com/bigquery/query-reference">look
+            on the query reference</a></p>
+    </div>
+</div>
+
+<div class="control-group">
+    <label class="control-label bott">Params</label>
+
+    <div class="controls clearfix top10" ng-repeat="param in params">
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="input-group  ">
+                    <span class="input-group-addon">@</span>
+                    <input type="text" class="form-control" value="{{param}}">
                 </div>
 
-                    <div class="control-group">
-                        <label class="control-label" for="commentText">Description</label>
-
-                        <div class="controls">
-                            <input ng-model="commentText" id="commentText" name="commentText" type="text"
-                                   placeholder="Description" class="input-xlarge form-control"
-                                   required="">
-
-                            <p class="help-block">Request's meaning</p>
-                        </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="input-group">
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-default dropdown-toggle"
+                                data-toggle="dropdown" aria-expanded="false">Type <span
+                                class="caret"></span></button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a><i class="fa fa-font"></i> Text</a></li>
+                            <li><a><i class="fa fa-list"></i> List</a></li>
+                            <li><a><i class="fa fa-calendar"></i> Date</a></li>
+                            <li><a><i class="fa fa-calculator"></i> Number</a></li>
+                        </ul>
                     </div>
-
-                    <div class="control-group">
-                        <label class="control-label">Request</label>
-
-                        <div class="controls">
-                            <ui-codemirror ng-model="requestText" ui-codemirror-opts="editorOptions" ></ui-codemirror>
-
-                            <p class="help-block">Put a valid bigquery request <a href="https://cloud.google.com/bigquery/query-reference">look on the query reference</a></p>
-                        </div>
-                    </div>
-
-                <div class="control-group">
-                    <label class="control-label bott">Params</label>
-
-                    <div class="controls clearfix top10">
-                        <div class="row">
-                            <div class="col-xs-6">
-                                <div class="input-group  ">
-                                    <span class="input-group-addon">@</span>
-                                    <input type="text" class="form-control" value="name">
-                                </div>
-
-                            </div>
-                            <div class="col-xs-4">
-                                <div class="input-group">
-                                    <div class="input-group-btn">
-                                        <button type="button" class="btn btn-default dropdown-toggle"
-                                                data-toggle="dropdown" aria-expanded="false">Type <span
-                                                class="caret"></span></button>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li><a><i class="fa fa-font"></i> Text</a></li>
-                                            <li><a><i class="fa fa-list"></i> List</a></li>
-                                            <li><a><i class="fa fa-calendar"></i> Date</a></li>
-                                            <li><a><i class="fa fa-calculator"></i> Number</a></li>
-                                        </ul>
-                                    </div>
-                                    <!-- /btn-group -->
-                                    <input type="text" class="form-control">
-                                </div>
-                                <!-- /input-group -->
-                            </div>
-                            <div class="col-xs-2">
-                                <button type="button" class="btn btn-success" aria-label="Add param">
-                                    <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
-                                </button>
-                                <button type="button" class="btn btn-danger" aria-label="Delete param">
-                                    <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
-                                </button>
-                            </div>
-                        </div>
-                        <p class="help-block">Put a valid bigquery request <a
-                                href="https://cloud.google.com/bigquery/query-reference">look on the query reference</a>
-                        </p>
-                    </div>
+                    <!-- /btn-group -->
+                    <input type="text" class="form-control">
                 </div>
-
-                    <div class="control-group">
-                        <label class="control-label" for="btnValider"></label>
-
-                        <div class="controls">
-                            <button id="btnValider" name="btnValider" class="btn btn-primary" ng-click="addNewItem()">
-                                Save
-                            </button>
-                            <button id="btnAnnuler" name="btnAnnuler" class="btn btn-danger" ng-click="cancel()">
-                                Cancel
-                            </button>
-                            <button type="submit" class="btn btn-success" ng-click="test()">
-                                <i ng-hide="isRunning" class="glyphicon glyphicon-play" ></i>
-                                <i ng-show="isRunning" class="glyphicon glyphicon-refresh spin" ></i>
-                            </button>
-                        </div>
-                    </div>
-
-                </fieldset>
-            </form>
-
+                <!-- /input-group -->
+            </div>
+            <div class="col-xs-2">
+                <button type="button" class="btn btn-danger" aria-label="Delete param">
+                    <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
+                </button>
+            </div>
         </div>
     </div>
-    <br/>
-    <div class="row">
-        <div class="alert alert-success" ng-show="status.isOk && status.message !== ''">
-            {{status.message}}
-        </div>
-        <div class="alert alert-danger" ng-show="!status.isOk && status.message !== ''">
-            {{status.message}}
-        </div>
-
+    <div class="controls clearfix top10">
+        <button type="button" class="btn btn-success" aria-label="Add param">
+            <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+        </button>
     </div>
+
+</div>
+
+<div class="control-group">
+    <label class="control-label" for="btnValider"></label>
+
+    <div class="controls">
+        <button id="btnValider" name="btnValider" class="btn btn-primary" ng-click="addNewItem()">
+            Save
+        </button>
+        <button id="btnAnnuler" name="btnAnnuler" class="btn btn-danger" ng-click="cancel()">
+            Cancel
+        </button>
+        <button type="submit" class="btn btn-success" ng-click="test()">
+            <i ng-hide="isRunning" class="glyphicon glyphicon-play"></i>
+            <i ng-show="isRunning" class="glyphicon glyphicon-refresh spin"></i>
+        </button>
+    </div>
+</div>
+
+</fieldset>
+</form>
+
+</div>
+</div>
+<br/>
+
+<div class="row">
+    <div class="alert alert-success" ng-show="status.isOk && status.message !== ''">
+        {{status.message}}
+    </div>
+    <div class="alert alert-danger" ng-show="!status.isOk && status.message !== ''">
+        {{status.message}}
+    </div>
+
+</div>
 </div>

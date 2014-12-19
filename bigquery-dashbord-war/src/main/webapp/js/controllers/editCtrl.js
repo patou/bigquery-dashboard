@@ -4,6 +4,7 @@ app.controller('EditCtrl', function ($http, $scope, $location, $interval, $route
     $scope.result = {};
     $scope.formDisabled = true;
     $scope.isRunning = false;
+    $scope.params = [];
     $scope.status = {
         isOk: "",
         message: ""
@@ -19,6 +20,17 @@ app.controller('EditCtrl', function ($http, $scope, $location, $interval, $route
         extraKeys: {"Ctrl-Space": "autocomplete"},
         mode: 'text/x-sql'
     };
+
+    $scope.$watch('requestText', function() {
+        var myRe = /@[^ .']+/g;
+        var str = $scope.requestText;
+        var myArray;
+        $scope.params = [];
+        while ((myArray = myRe.exec(str)) != null){
+            var content = myArray[0];
+            $scope.params.push(removeAt(content));
+        }
+    });
 
     if ($routeParams.reqId) {
 
@@ -75,6 +87,10 @@ app.controller('EditCtrl', function ($http, $scope, $location, $interval, $route
                 $scope.isRunning = false;
             });
 
-    }
+    };
+
+    var removeAt = function(value) {
+        return value.substring(1, value.length);
+    };
 
 });
