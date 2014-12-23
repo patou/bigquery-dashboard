@@ -1,8 +1,8 @@
 package com.github.bigquery.dashboard.model;
 
-import com.google.gson.annotations.Expose;
 import com.googlecode.objectify.Ref;
 import com.googlecode.objectify.annotation.*;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,27 +14,22 @@ import java.util.List;
 @Entity
 public class BigQuery {
     @Id
-    @Expose
     private Long id;
 
-    @Expose
     @Index
     @AlsoLoad("libelle")
     private String label;
 
-    @Expose
     @Index
     private String comment;
 
-    @Expose
     private String request;
-    @Expose
     private String icons;
 
     @Load(value = WithParams.class)
+    @JsonIgnore
     List<Ref<AbstractQueryParam>> refParams = new ArrayList<>();
 
-    @Expose
     @Ignore
     List<AbstractQueryParam> params = null;
 
