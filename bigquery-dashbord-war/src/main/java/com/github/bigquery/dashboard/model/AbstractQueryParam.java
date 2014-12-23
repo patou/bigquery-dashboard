@@ -1,6 +1,5 @@
 package com.github.bigquery.dashboard.model;
 
-import com.google.gson.annotations.Expose;
 import com.googlecode.objectify.Key;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
@@ -28,11 +27,8 @@ public abstract class AbstractQueryParam {
     @Parent
     private Key<BigQuery> bigQuery;
     @Id
-    @Expose
     protected String name;
-    @Expose
     protected String label;
-    @Expose
     protected Type type;
 
     public Key<BigQuery> getBigQuery() {
@@ -74,7 +70,6 @@ public abstract class AbstractQueryParam {
     @Subclass
     @JsonTypeName("TEXT")
     public static class TextQueryParam extends AbstractQueryParam {
-        @Expose
         private String defaultValue;
 
         public TextQueryParam() {
@@ -92,7 +87,6 @@ public abstract class AbstractQueryParam {
     @Subclass
     @JsonTypeName("DATE")
     public static class DateQueryParam extends AbstractQueryParam {
-        @Expose
         private Date defaultValue;
 
         public DateQueryParam() {
@@ -110,7 +104,6 @@ public abstract class AbstractQueryParam {
     @Subclass
     @JsonTypeName("NUMBER")
     public static class NumberQueryParam extends AbstractQueryParam {
-        @Expose
         private Number defaultValue;
 
         public NumberQueryParam() {
@@ -128,9 +121,7 @@ public abstract class AbstractQueryParam {
     @Subclass
     @JsonTypeName("LIST")
     public static class ListQueryParam extends AbstractQueryParam {
-        @Expose
         private List<String> values; // for Type LIST
-        @Expose
         private String defaultValue;
 
         public ListQueryParam() {

@@ -1,11 +1,6 @@
 package com.github.bigquery.dashboard.model;
 
-import com.google.gson.annotations.Expose;
-import com.googlecode.objectify.Ref;
 import com.googlecode.objectify.annotation.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * 01/10/2014.
@@ -14,14 +9,12 @@ import java.util.List;
 @Entity
 public class Dashboard {
     @Id
-    @Expose
     private Long id;
 
-    @Expose
     @Index
     private String label;
 
-    @Expose
+    @Index
     private String user;
 
     public Long getId() {
