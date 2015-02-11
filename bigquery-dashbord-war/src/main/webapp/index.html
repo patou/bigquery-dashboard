@@ -67,23 +67,24 @@
         <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav side-nav">
-            <ul class="nav navbar-nav side-nav">
-                <li>
-                    <a ng-href="#/" data-toggle="collapse" data-target="#dash" class="" aria-expanded="false"><i
-                            class="fa fa-fw fa-dashboard"></i> Dashboards <i class="fa fa-fw fa-caret-down"></i></a>
-                    <ul id="dash" class="collapse in" aria-expanded="false">
-                        <li ng-repeat="dashboard in dashboards">
-                            <a ng-class="{active: isActive('/dashboard')}" ng-href="#/dashboard/{{dashboard.id}}">{{dashboard.label}}</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a ng-href="#/requests"><i class="fa fa-fw fa-bar-chart-o"></i> Requests</a>
-                </li>
-                <li ng-class="{active: isActive('/admin')}">
-                    <a ng-show="isAdmin" ng-href="#/admin"><i class="fa fa-fw fa-edit"></i> Administration</a>
-                </li>
+                <ul class="nav navbar-nav side-nav">
+                    <li>
+                        <a ng-href="#/" data-toggle="collapse" data-target="#dash" class="" aria-expanded="false"><i
+                                class="fa fa-fw fa-dashboard"></i> Dashboards <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="dash" class="collapse in" aria-expanded="false">
+                            <li ng-repeat="dashboard in dashboards">
+                                <a ng-class="{active: isActive('/dashboard')}" ng-href="#/dashboard/{{dashboard.id}}">{{dashboard.label}}</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a ng-href="#/requests"><i class="fa fa-fw fa-bar-chart-o"></i> Requests</a>
+                    </li>
+                    <li ng-class="{active: isActive('/admin')}">
+                        <a ng-show="isAdmin" ng-href="#/admin"><i class="fa fa-fw fa-edit"></i> Administration</a>
+                    </li>
 
+                </ul>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -94,6 +95,8 @@
         <div ng-view></div>
 
     </div>
+    <type-param></type-param>
+
     <!-- /#page-wrapper -->
 
 </div>
@@ -114,6 +117,7 @@
 <script src="js/model/param.js"></script>
 <script src="js/services/authSrvc.js"></script>
 <script src="js/routes/route.js"></script>
+<script src="js/directives/typeParamDrv.js"></script>
 <script src="js/controllers/homeCtrl.js"></script>
 <script src="js/controllers/dashboardCtrl.js"></script>
 <script src="js/controllers/addDashboard.js"></script>
