@@ -14,3 +14,8 @@ hs_err_pid*
 .idea
 target
 bigquery-dashbord-war/bigquery-dashbord-war.iml
+bigquery-dashbord-war/.classpath
+*.project
+.project
+.classpath
+.settings
