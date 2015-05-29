@@ -147,7 +147,7 @@
                     <disableUpdateCheck>true</disableUpdateCheck>
                     <oauth2>false</oauth2>
                     <passin>true</passin>
-                    <email>angelomiguellima@gmail.com</email>
+                    <email>dashboardbiquery@gmail.com</email>
                 </configuration>
             </plugin>
         </plugins>
