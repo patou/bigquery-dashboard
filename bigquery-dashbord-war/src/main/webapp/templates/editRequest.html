@@ -328,31 +328,7 @@
 
     <div class="controls clearfix top10" ng-repeat="param in params">
         <div class="row">
-            <div class="col-xs-6">
-                <div class="input-group  ">
-                    <span class="input-group-addon">@</span>
-                    <input type="text" class="form-control" value="{{param}}">
-                </div>
-
-            </div>
-            <div class="col-xs-4">
-                <div class="input-group">
-                    <div class="input-group-btn">
-                        <button type="button" class="btn btn-default dropdown-toggle"
-                                data-toggle="dropdown" aria-expanded="false">Type <span
-                                class="caret"></span></button>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a><i class="fa fa-font"></i> Text</a></li>
-                            <li><a><i class="fa fa-list"></i> List</a></li>
-                            <li><a><i class="fa fa-calendar"></i> Date</a></li>
-                            <li><a><i class="fa fa-calculator"></i> Number</a></li>
-                        </ul>
-                    </div>
-                    <!-- /btn-group -->
-                    <input type="text" class="form-control">
-                </div>
-                <!-- /input-group -->
-            </div>
+            <type-param param="param"></type-param>
             <div class="col-xs-2">
                 <button type="button" class="btn btn-danger" aria-label="Delete param" ng-click="removeParam($index)">
                     <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>

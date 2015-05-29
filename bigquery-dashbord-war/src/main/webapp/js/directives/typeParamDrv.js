@@ -5,6 +5,9 @@ app.directive('TypeParam', function () { //type-param
         restrict : "E",
         replace: true,
         transclude: true,
+        scope: {
+          param: '='
+        },
         link : function (scope, attributes) {
 
         },
