@@ -1,4 +1,4 @@
-bigquery-dashboard
+bigquery-dashboard [![Build Status](https://travis-ci.org/patou/bigquery-dashboard.svg?branch=master)](https://travis-ci.org/patou/bigquery-dashboard)
 ==================
 
 Dashbord for Big Query is a project for simplify query of BigQuery.
