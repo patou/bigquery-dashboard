@@ -1,11 +1,15 @@
 package com.github.bigquery.dashboard.model;
 
+import com.github.bigquery.dashboard.service.OfyService;
+import com.googlecode.objectify.Key;
 import com.googlecode.objectify.Ref;
 import com.googlecode.objectify.annotation.*;
 import org.codehaus.jackson.annotate.JsonIgnore;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 01/10/2014.
@@ -81,12 +85,19 @@ public class BigQuery {
         this.refParams = refParams;
     }
 
+    public void setKeyParams(Collection<Key<AbstractQueryParam>> keyParams) {
+        refParams.clear();
+        for (Key<AbstractQueryParam> keyParam : keyParams) {
+            refParams.add(Ref.create(keyParam));
+        }
+    }
+
     public List<AbstractQueryParam> getParams() {
         if (params == null && refParams.size() > 0) {
             params = new ArrayList<>();
-            for (Ref<AbstractQueryParam> ref : refParams) {
-                if (ref.isLoaded()) {
-                    params.add(ref.get());
+            if (refParams.get(0).isLoaded()) {
+                for (Ref<AbstractQueryParam> refParam : refParams) {
+                    params.add(refParam.get());
                 }
             }
         }
@@ -95,12 +106,6 @@ public class BigQuery {
 
     public void setParams(List<AbstractQueryParam> params) {
         this.params = params;
-        if (params != null) {
-            refParams.clear();
-            for (AbstractQueryParam ref : params) {
-                refParams.add(Ref.create(ref));
-            }
-        }
     }
 
     public static class WithParams {}

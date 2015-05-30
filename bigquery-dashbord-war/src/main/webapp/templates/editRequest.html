@@ -17,7 +17,7 @@
     <label class="control-label" for="labelText">Label</label>
 
     <div class="controls">
-        <input ng-model="labelText" id="labelText" name="labelText" type="text"
+        <input ng-model="item.label" id="labelText" name="labelText" type="text"
                placeholder="Label" class="input-xlarge form-control"
                required="">
 
@@ -26,10 +26,10 @@
 </div>
 
 <div class="control-group">
-<label class="control-label" for="labelText">Icon</label>
+<label class="control-label" for="labelText">Icon <i class="fa" ng-class="item.icons"></i></label>
 
 <div class="controls">
-<select ng-model="icons" class="form-control">
+<select ng-model="item.icons" class="form-control">
 <option value="">-</option>
 <optgroup label="Web Application Icons">
     <option value="fa-adjust">fa-adjust</option>
@@ -304,7 +304,7 @@
     <label class="control-label" for="commentText">Description</label>
 
     <div class="controls">
-        <input ng-model="commentText" id="commentText" name="commentText" type="text"
+        <input ng-model="item.comment" id="commentText" name="commentText" type="text"
                placeholder="Description" class="input-xlarge form-control"
                required="">
 
@@ -316,7 +316,7 @@
     <label class="control-label">Request</label>
 
     <div class="controls">
-        <ui-codemirror ng-model="requestText" ui-codemirror-opts="editorOptions"></ui-codemirror>
+        <ui-codemirror ng-model="item.request" ui-codemirror-opts="editorOptions"></ui-codemirror>
 
         <p class="help-block">Put a valid bigquery request <a href="https://cloud.google.com/bigquery/query-reference">look
             on the query reference</a></p>
@@ -326,9 +326,39 @@
 <div class="control-group">
     <label class="control-label bott">Params</label>
 
-    <div class="controls clearfix top10" ng-repeat="param in params">
+    <div class="controls clearfix top10" ng-repeat="param in item.params">
         <div class="row">
             <type-param param="param"></type-param>
+            <div class="col-xs-3">
+                <div class="input-group  ">
+                    <span class="input-group-addon">@</span>
+                    <input type="text" class="form-control" ng-model="param.name" ng-change="changeItemName(param.name, '{{param.name}}')" ng-pattern="$[-_0-9a-zA-Z]*^"/>
+                </div>
+            </div>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" ng-model="param.label" placeholder="label">
+            </div>
+            <div class="col-xs-4">
+                <div class="input-group" ng-switch="param.type">
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-default dropdown-toggle"
+                                data-toggle="dropdown" aria-expanded="false">{{itemText(param.type)}} <span
+                                class="caret"></span></button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a ng-click="changeItemType(param, 'TEXT')"><i class="fa fa-font"></i> Text</a></li>
+                            <li><a ng-click="changeItemType(param, 'LIST')"><i class="fa fa-list"></i> List</a></li>
+                            <li><a ng-click="changeItemType(param, 'DATE')"><i class="fa fa-calendar"></i> Date</a></li>
+                            <li><a ng-click="changeItemType(param, 'NUMBER')"><i class="fa fa-calculator"></i> Number</a></li>
+                        </ul>
+                    </div>
+                    <!-- /btn-group -->
+                    <input type="text" class="form-control" ng-model="param.defaultValue"  placeholder="Default value" ng-switch-default>
+                    <input type="text" class="form-control" ng-list="," ng-model="param.values" placeholder="list of value separated with commat : one,two" ng-switch-when="LIST">
+                    <input type="date" class="form-control" ng-model="param.defaultValue" ng-switch-when="DATE">
+                    <input type="number" class="form-control" ng-model="param.defaultValue" ng-switch-when="NUMBER">
+                </div>
+                <!-- /input-group -->
+            </div>
             <div class="col-xs-2">
                 <button type="button" class="btn btn-danger" aria-label="Delete param" ng-click="removeParam($index)">
                     <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
@@ -354,7 +384,7 @@
         <button id="btnAnnuler" name="btnAnnuler" class="btn btn-danger" ng-click="cancel()">
             Cancel
         </button>
-        <button type="submit" class="btn btn-success" ng-click="test()">
+        <button type="button" class="btn btn-success" ng-click="test()">
             <i ng-hide="isRunning" class="glyphicon glyphicon-play"></i>
             <i ng-show="isRunning" class="glyphicon glyphicon-refresh spin"></i>
         </button>

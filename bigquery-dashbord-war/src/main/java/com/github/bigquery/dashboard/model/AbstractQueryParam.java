@@ -5,6 +5,7 @@ import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 import com.googlecode.objectify.annotation.Parent;
 import com.googlecode.objectify.annotation.Subclass;
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonSubTypes;
 import org.codehaus.jackson.annotate.JsonTypeInfo;
 import org.codehaus.jackson.annotate.JsonTypeName;
@@ -25,6 +26,7 @@ import java.util.List;
 })
 public abstract class AbstractQueryParam {
     @Parent
+    @JsonIgnore
     private Key<BigQuery> bigQuery;
     @Id
     protected String name;
@@ -104,7 +106,7 @@ public abstract class AbstractQueryParam {
     @Subclass
     @JsonTypeName("NUMBER")
     public static class NumberQueryParam extends AbstractQueryParam {
-        private Number defaultValue;
+        private Double defaultValue;
 
         public NumberQueryParam() {
             type = Type.NUMBER;
@@ -114,7 +116,7 @@ public abstract class AbstractQueryParam {
             return defaultValue;
         }
 
-        public void setDefaultValue(Number defaultValue) {
+        public void setDefaultValue(Double defaultValue) {
             this.defaultValue = defaultValue;
         }
     }

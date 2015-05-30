@@ -1,6 +1,7 @@
 package com.github.bigquery.dashboard.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.github.bigquery.dashboard.model.AbstractQueryParam;
 import com.github.bigquery.dashboard.model.BigQuery;
@@ -44,7 +45,9 @@ public final class BigQueryService {
                     for (AbstractQueryParam param : params) {
                         param.setBigQuery(bigqueryKey);
                     }
-                    saver.entities(params).now();
+                    Map<Key<AbstractQueryParam>, AbstractQueryParam> keys = saver.entities(params).now(); //Save Params
+                    item.setKeyParams(keys.keySet());
+                    saver.entity(item).now(); //Save refs
                 }
                 return item;
             }

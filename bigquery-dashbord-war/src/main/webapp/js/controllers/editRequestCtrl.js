@@ -1,11 +1,9 @@
 //TODO use param object instead of flat string.
 app.controller('EditRequestCtrl', function ($http, $scope, $location, $interval, $routeParams, AuthService) {
     AuthService.refresh();
-    $scope.items = {};
-    $scope.result = {};
+    $scope.item = {label: "", request: "SELECT * FROM [project.tablename]", comment: "", id: undefined, icons: '', params: []};
     $scope.formDisabled = true;
     $scope.isRunning = false;
-    $scope.params = [];
     $scope.status = {
         isOk: "",
         message: ""
@@ -30,30 +28,22 @@ app.controller('EditRequestCtrl', function ($http, $scope, $location, $interval,
     //        $scope.params.push({name:removeAt(content), type:'TEXT'});
     //    }
     //});
+    $scope.changeItemName = function (newValue, oldValue) {
+        // access new and old value here
+        $scope.item.request = $scope.item.request.replace("@"+oldValue, "@"+newValue);
+    };
 
     if ($routeParams.reqId) {
         $http.get("/api/service/query/" + $routeParams.reqId)
             .success(function (data) {
                 $scope.formDisabled = false;
-                $scope.labelText = data.label;
-                $scope.commentText = data.comment;
-                $scope.requestText = data.request;
-                $scope.icons = data.icons;
-                $scope.id = data.id;
-                $scope.params = data.params;
+                $scope.item = data;
             });
     }
 
     $scope.addNewItem = function () {
-        var item = {label: $scope.labelText, request: $scope.requestText, comment: $scope.commentText, id: $scope.id, icons: $scope.icons};
-        $http.put("/api/service/query", item)
+        $http.put("/api/service/query", $scope.item)
             .success(function (data) {
-                $scope.items = eval(data);
-                $scope.labelText = "";
-                $scope.commentText = "";
-                $scope.requestText = "";
-                $scope.icons = "";
-                $scope.formDisabled = false;
                 $location.path("/admin");
             })
             .error(function (error) {
@@ -63,18 +53,14 @@ app.controller('EditRequestCtrl', function ($http, $scope, $location, $interval,
     };
 
     $scope.cancel = function () {
-        $scope.labelText = "";
-        $scope.commentText = "";
-        $scope.requestText = "";
-        $scope.icons = "";
+        $scope.item = item = {label: "", request: "SELECT * FROM [project.tablename]", comment: "", id: undefined, icons: '', params: []};
         $scope.formDisabled = false;
         $location.path("/admin");
     };
 
     $scope.test = function () {
         $scope.isRunning = true;
-        var item = {label: $scope.labelText, request: $scope.requestText, comment: $scope.commentText, id: $scope.id, icons: $scope.icons, params: $scope.params};
-        $http.post("/api/execute/query/try", item.request)
+        $http.post("/api/execute/query/try", $scope.item.request)
             .success(function () {
                 $scope.status.message = "Requête valide";
                 $scope.status.isOk = true;
@@ -85,23 +71,49 @@ app.controller('EditRequestCtrl', function ($http, $scope, $location, $interval,
                 $scope.status.isOk = false;
                 $scope.isRunning = false;
             });
-
     };
 
     $scope.removeParam = function(index) {
         if (index > -1) {
-            var defaultParam = $scope.params.defaultValue; //TODO retrieve the default value of the current param to be replaced.
+            var defaultParam = $scope.item.params[index].defaultValue;
             if (!defaultParam)
                 defaultParam = "";
-            $scope.params.splice(index+1, 1);
-            $scope.requestText = $scope.requestText.replace("@"+$scope.params[index].name, defaultParam);
+            $scope.item.request = $scope.item.request.replace("@"+$scope.item.params[index].name, defaultParam);
+            $scope.item.params = $scope.item.params.splice(index, 1);
         }
     };
 
+    $scope.itemText = function (type) {
+        switch (type) {
+            case 'TEXT': return "Text";
+            case 'DATE': return "Date";
+            case 'LIST': return "List";
+            case 'NUMBER': return "Number";
+        }
+    }
+
+    $scope.changeItemType = function (param, type) {
+        param.type = type;
+        switch (type) {
+            case 'TEXT':
+                param.defaultValue = "";
+                break;
+            case 'DATE':
+                param.defaultValue = null;
+                break;
+            case 'LIST':
+                param.values = [];
+                break;
+            case 'NUMBER':
+                param.defaultValue = 0;
+                break;
+        }
+    }
+
     $scope.addParam = function() {
         var item = Math.random().toString(36).substring(7);
-        $scope.params.push({name:item, type:'TEXT'}); //TODO assign a logical text here.
-        $scope.requestText = $scope.requestText + " @"+item;
+        $scope.item.params.push({name:item, type:'TEXT'}); //TODO assign a logical text here.
+        $scope.item.request += " @"+item;
     };
 
     var removeAt = function(value) {

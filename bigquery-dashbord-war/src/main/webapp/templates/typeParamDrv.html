@@ -1,24 +1,32 @@
-<div class="col-xs-6">
-    <div class="input-group  ">
-        <span class="input-group-addon">@</span>
-        <input type="text" class="form-control" value="{{param.name}}">
-    </div>
-</div>
-<div class="col-xs-4">
-    <div class="input-group">
-        <div class="input-group-btn">
-            <button type="button" class="btn btn-default dropdown-toggle"
-                    data-toggle="dropdown" aria-expanded="false">{{param.type}} <span
-                    class="caret"></span></button>
-            <ul class="dropdown-menu" role="menu">
-                <li><a><i class="fa fa-font"></i> Text</a></li>
-                <li><a><i class="fa fa-list"></i> List</a></li>
-                <li><a><i class="fa fa-calendar"></i> Date</a></li>
-                <li><a><i class="fa fa-calculator"></i> Number</a></li>
-            </ul>
+<span>
+    <div class="col-xs-3">
+        <div class="input-group  ">
+            <span class="input-group-addon">@</span>
+            <input type="text" class="form-control" value="{{param.name}}">
         </div>
-        <!-- /btn-group -->
-        <input type="text" class="form-control" ng-model="param.defaultValue">
     </div>
-    <!-- /input-group -->
-</div>
+    <div class="col-xs-3">
+        <input type="text" class="form-control" value="{{param.label}}" placeholder="label">
+    </div>
+    <div class="col-xs-4">
+        <div class="input-group" ng-switch="param.type">
+            <div class="input-group-btn">
+                <button type="button" class="btn btn-default dropdown-toggle"
+                        data-toggle="dropdown" aria-expanded="false">{{param.type}} <span
+                        class="caret"></span></button>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a ng-click="param.type = 'TEXT'"><i class="fa fa-font"></i> Text</a></li>
+                    <li><a ng-click="param.type = 'LIST'"><i class="fa fa-list"></i> List</a></li>
+                    <li><a ng-click="param.type = 'DATE'"><i class="fa fa-calendar"></i> Date</a></li>
+                    <li><a ng-click="param.type = 'NUMBER'"><i class="fa fa-calculator"></i> Number</a></li>
+                </ul>
+            </div>
+            <!-- /btn-group -->
+            <input type="text" class="form-control" ng-model="param.defaultValue" ng-switch-default>
+            <input type="text" class="form-control" ng-list="," ng-model="param.defaultValue" ng-switch-when="LIST">
+            <input type="date" class="form-control" ng-model="param.defaultValue" ng-switch-when="DATE">
+            <input type="number" class="form-control" ng-model="param.defaultValue" ng-switch-when="NUMBER">
+        </div>
+        <!-- /input-group -->
+    </div>
+</span>
